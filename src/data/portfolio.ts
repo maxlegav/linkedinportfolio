@@ -105,7 +105,7 @@ export const me: User = {
   avatarUrl: "/photo_profil copie-Photoroom.png",
   bannerUrl: "/banner-eiffel.jpg",
   connectionsLabel: "500+ connections",
-  cvUrl: "/Copie de Template de CV  ATS Friendly (1).pdf",
+  cvUrl: "/MaxLemoineGavoilleCV.pdf",
   linkedinUrl: "https://www.linkedin.com/in/max-lemoine-gavoille-173158260/",
   email: "maxlemgav@gmail.com",
   phone: "+33 661089000",
