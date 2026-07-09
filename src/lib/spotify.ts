@@ -39,6 +39,7 @@ export type Album = {
 
 const COVER_STYLES: Record<string, CoverStyle> = {
   p0: { gradient: "linear-gradient(135deg, #0b1026 0%, #04060f 60%, #000 100%)", color: "#16213e", label: "FOCUS" },
+  p11: { gradient: "linear-gradient(135deg, #f26522 0%, #7a2e0e 100%)", color: "#c2410c", label: "Alcatraz" },
   p1: { gradient: "linear-gradient(135deg, #0070AD 0%, #003a5c 100%)", color: "#0070AD", label: "Capgemini" },
   p2: { gradient: "linear-gradient(135deg, #6d28d9 0%, #312e81 100%)", color: "#5b21b6", label: "Autoinvoice" },
   p3: { gradient: "linear-gradient(135deg, #111 0%, #7c2d5e 55%, #c2410c 100%)", color: "#9d174d", label: "SYB" },
@@ -53,6 +54,7 @@ const COVER_STYLES: Record<string, CoverStyle> = {
 
 const SHORT_TITLES: Record<string, string> = {
   p0: "FOCUS · Satellite Collision Avoidance",
+  p11: "Alcatraz · Security for AI Agents",
   p1: "Capgemini · Cybersecurity Consultant",
   p2: "Autoinvoice · SaaS exit €10k",
   p3: "ShowYourBrand · GEO Platform",
@@ -67,6 +69,7 @@ const SHORT_TITLES: Record<string, string> = {
 
 const ALBUM_TYPES: Record<string, AlbumType> = {
   p0: "Album",
+  p11: "Album",
   p1: "Compilation",
   p2: "Album",
   p3: "Album",
@@ -92,6 +95,7 @@ export const CATEGORY_DEFS: { id: string; label: string; emoji: string; color: s
 
 const CATEGORIES: Record<string, string[]> = {
   p0: ["hackathons", "ai-ml"],
+  p11: ["hackathons", "cybersecurity", "saas"],
   p1: ["cybersecurity", "ai-ml"],
   p2: ["saas"],
   p3: ["saas", "ai-ml"],
@@ -144,11 +148,11 @@ export function albumById(id: string): Album | undefined {
   return albums.find((a) => a.id === id);
 }
 
-export const popularAlbums = ["p0", "p1", "p2", "p3", "p10"]
+export const popularAlbums = ["p11", "p0", "p1", "p2", "p3"]
   .map((id) => albumById(id))
   .filter((a): a is Album => Boolean(a));
 
-export const hackathonProjects = ["p0", "p2", "p3", "p10"]
+export const hackathonProjects = ["p11", "p0", "p2", "p3", "p10"]
   .map((id) => albumById(id))
   .filter((a): a is Album => Boolean(a));
 
