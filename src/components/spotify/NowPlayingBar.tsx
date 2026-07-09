@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Cover } from "./Cover";
 import { usePlayer } from "./PlayerContext";
 import {
+  CloseIcon,
   FullscreenIcon,
   HeartIcon,
   NextIcon,
@@ -20,8 +21,43 @@ import {
 export function NowPlayingBar() {
   const { current, isPlaying, liked, togglePlay, next, prev, toggleLike } = usePlayer();
   const [volume, setVolume] = useState(70);
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  const handlePlay = () => {
+    if (!isPlaying && current.videoUrl) {
+      setVideoOpen(true);
+    }
+    togglePlay();
+  };
 
   return (
+    <>
+      {videoOpen && current.videoUrl && (
+        <div className="fixed inset-0 z-50 flex flex-col bg-black/95">
+          <div className="flex items-center justify-between px-4 py-3 md:px-8">
+            <div className="min-w-0">
+              <p className="truncate text-sm font-bold text-white">{current.shortTitle}</p>
+              <p className="truncate text-xs text-sp-muted">Demo video</p>
+            </div>
+            <button
+              aria-label="Close video"
+              onClick={() => setVideoOpen(false)}
+              className="text-sp-muted hover:text-white"
+            >
+              <CloseIcon size={24} />
+            </button>
+          </div>
+          <div className="flex flex-1 items-center justify-center p-4 pb-[100px]">
+            <video
+              src={current.videoUrl}
+              controls
+              autoPlay
+              playsInline
+              className="max-h-full w-full max-w-5xl rounded-lg"
+            />
+          </div>
+        </div>
+      )}
     <footer className="fixed bottom-[56px] left-0 right-0 z-40 border-t border-[#282828] bg-black/90 backdrop-blur-[20px] md:bottom-0">
       {/* Desktop */}
       <div className="hidden h-[90px] items-center px-4 md:flex">
@@ -57,7 +93,7 @@ export function NowPlayingBar() {
             </button>
             <button
               aria-label={isPlaying ? "Pause" : "Play"}
-              onClick={togglePlay}
+              onClick={handlePlay}
               className="sp-pill flex h-8 w-8 items-center justify-center bg-white text-black transition-transform hover:scale-105"
             >
               {isPlaying ? <PauseIcon size={16} /> : <PlayIcon size={16} />}
@@ -92,7 +128,11 @@ export function NowPlayingBar() {
             aria-label="Volume"
             className="sp-slider w-24"
           />
-          <button aria-label="Fullscreen" className="hover:text-white">
+          <button
+            aria-label="Fullscreen"
+            onClick={() => current.videoUrl && setVideoOpen(true)}
+            className="hover:text-white"
+          >
             <FullscreenIcon size={16} />
           </button>
         </div>
@@ -109,12 +149,13 @@ export function NowPlayingBar() {
         </Link>
         <button
           aria-label={isPlaying ? "Pause" : "Play"}
-          onClick={togglePlay}
+          onClick={handlePlay}
           className="sp-pill flex h-9 w-9 shrink-0 items-center justify-center bg-white text-black"
         >
           {isPlaying ? <PauseIcon size={16} /> : <PlayIcon size={16} />}
         </button>
       </div>
     </footer>
+    </>
   );
 }
