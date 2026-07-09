@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const figtree = Figtree({
+  variable: "--font-figtree",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Max Lemoine Gavoille - Portfolio (LinkedIn style)",
+  title: "Max Lemoine-Gavoille — Portfolio",
   description:
-    "Project feed, CV-style profile (education, skills, experience), and messaging powered by data from the previous public portfolio.",
+    "Max Lemoine-Gavoille's portfolio as a Spotify-style discography: projects as albums, experience as compilations, and a verified artist profile.",
 };
 
 export default function RootLayout({
@@ -24,10 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${figtree.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
