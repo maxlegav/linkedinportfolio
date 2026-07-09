@@ -23,7 +23,7 @@ export function Sidebar() {
       <div className="px-6 pt-6">
         <Link href="/" className="flex items-center gap-2 text-white">
           <SpotifyLogo size={32} />
-          <span className="text-lg font-bold">Spotify</span>
+          <span className="text-lg font-bold">Portfolio</span>
         </Link>
       </div>
 

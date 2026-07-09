@@ -33,6 +33,8 @@ export type Album = {
   categories: string[];
   cover: CoverStyle;
   tracks: Track[];
+  /** Optional demo video shown in the player overlay (file in /public/videos or external URL) */
+  videoUrl?: string;
 };
 
 const COVER_STYLES: Record<string, CoverStyle> = {
@@ -102,6 +104,9 @@ const CATEGORIES: Record<string, string[]> = {
   p10: ["freelance"],
 };
 
+/** Add per-project demo videos here, e.g. p0: "/videos/focus-demo.mp4" */
+const VIDEO_URLS: Record<string, string> = {};
+
 const FOCUS_TRACKS: Track[] = [
   { name: "3D Orbital Globe", meta: "SpaceTech" },
   { name: "Satellite Gallery", meta: "ML" },
@@ -132,6 +137,7 @@ export const albums: Album[] = projectPosts.map((post) => ({
   categories: CATEGORIES[post.id] ?? [],
   cover: COVER_STYLES[post.id] ?? { gradient: "linear-gradient(135deg, #333, #111)", color: "#333", label: post.title.slice(0, 2) },
   tracks: tracksOf(post),
+  videoUrl: VIDEO_URLS[post.id],
 }));
 
 export function albumById(id: string): Album | undefined {
