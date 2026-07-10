@@ -276,6 +276,21 @@ export const projectPosts: ProjectPost[] = [
     commentCount: 21,
   },
   {
+    id: "p11",
+    author: me,
+    createdAt: "Hackathon · Y Combinator · 2025",
+    title: "Alcatraz — Security layer for AI agents (Paris Builds Hackathon x Y Combinator)",
+    description:
+      "36 hours. No sleep. Build a company from scratch and pitch it for Y Combinator. That was the Paris Builds Hackathon in partnership with Y Combinator, powered by Anthropic, Hugging Face and Qube Research & Technologies. With Célia Lecat and Liam Szefner, we built Alcatraz, a security layer for AI agents. The idea is simple: just like startups delegate payments to Stripe, they can delegate agent security to us. Two lines of code to add, and they can focus entirely on their product, while staying compliant enough to close enterprise deals and actually sell. In 36 hours: 200 cold emails, ~10 live demos, and a previous hackathon winner who became our first customer. The room was the real thing — founders from Asia and all across Europe. What the format proves: in one weekend, you can go from zero to a product, a first customer, and a shot at a YC interview.",
+    tags: ["Hackathon", "YCombinator", "Startup", "AI Agents", "Security", "Anthropic", "Hugging Face", "B2B", "Compliance", "Sales", "Pitch"],
+    imageUrl: "/alcatraz-hackathon.jpg",
+    imageFit: "contain",
+    imagePadding: "tight",
+    links: [{ label: "LinkedIn post", url: "https://www.linkedin.com/feed/update/urn:li:activity:7477594335635546112/" }],
+    likeCount: 41,
+    commentCount: 3,
+  },
+  {
     id: "p1",
     author: me,
     createdAt: "Experience · Capgemini · From Sep 2025",
