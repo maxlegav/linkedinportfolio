@@ -2,22 +2,29 @@
 
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { albumById, albums, me } from "@/lib/spotify";
+import { useEffect, useState } from "react";
+import { albumById, me, recommendedAlbums } from "@/lib/spotify";
 import { AlbumCard } from "@/components/spotify/AlbumCard";
 import { Carousel } from "@/components/spotify/Carousel";
 import { Cover } from "@/components/spotify/Cover";
-import { ClockIcon, ExternalLinkIcon, PlayIcon } from "@/components/spotify/icons";
+import { ChevronDownIcon, ClockIcon, ExternalLinkIcon, PlayIcon } from "@/components/spotify/icons";
 import { usePlayer } from "@/components/spotify/PlayerContext";
 
 export default function AlbumPage() {
   const { id } = useParams<{ id: string }>();
-  const { play, current, isPlaying } = usePlayer();
+  const { play, select, openVideo, current, isPlaying } = usePlayer();
+  const [tracksOpen, setTracksOpen] = useState(false);
 
   const album = albumById(id);
+
+  useEffect(() => {
+    if (album) select(album.id);
+  }, [album, select]);
+
   if (!album) notFound();
 
   const playing = current.id === album.id && isPlaying;
-  const others = albums.filter((a) => a.id !== album.id).slice(0, 4);
+  const others = recommendedAlbums.filter((a) => a.id !== album.id);
 
   const handleLink = (url: string, copyText?: string) => {
     if (copyText && typeof navigator !== "undefined") {
@@ -30,14 +37,35 @@ export default function AlbumPage() {
     <div className="pb-12">
       {/* Header */}
       <header
-        className="flex flex-col items-center gap-6 px-4 pb-6 pt-10 md:flex-row md:items-end md:px-8"
+        className="relative flex flex-col items-center gap-6 overflow-hidden px-4 pb-6 pt-10 md:flex-row md:items-end md:px-8"
         style={{
           background: `linear-gradient(180deg, ${album.cover.color} 0%, #121212 100%)`,
         }}
       >
-        <Cover album={album} className="w-48 shrink-0 shadow-2xl md:w-60" />
-        <div className="min-w-0 text-center md:text-left">
-          <p className="text-xs font-bold uppercase tracking-widest text-white">{album.type}</p>
+        {album.videoUrl && (
+          <>
+            <video
+              src={album.videoUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 h-full w-full object-cover opacity-40"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-[#121212]" />
+          </>
+        )}
+        {album.videoUrl && (
+          <button
+            onClick={() => openVideo(album.id)}
+            className="sp-pill absolute right-4 top-4 z-10 flex items-center gap-2 bg-black/60 px-4 py-2 text-sm font-bold text-white backdrop-blur transition-colors hover:bg-black/80 md:right-8"
+          >
+            <PlayIcon size={14} /> Watch demo
+          </button>
+        )}
+        <Cover album={album} className="sp-rise relative z-10 w-48 shrink-0 shadow-2xl md:w-60" />
+        <div className="relative z-10 min-w-0 text-center md:text-left">
+          <p className="text-xs font-bold uppercase tracking-widest text-white">{album.group}</p>
           <h1 className="mt-2 text-3xl font-black tracking-tight text-white md:text-5xl">
             {album.title}
           </h1>
@@ -45,7 +73,7 @@ export default function AlbumPage() {
             <Link href="/artist" className="hover:underline">
               {me.name}
             </Link>{" "}
-            · {album.year} · {album.tracks.length} tracks
+            · {album.year} · {album.tracks.length} titles
           </p>
         </div>
       </header>
@@ -66,8 +94,21 @@ export default function AlbumPage() {
           )}
         </div>
 
-        {/* Tracklist */}
+        {/* Tracklist (collapsed behind a dropdown to save space) */}
         <section>
+          <button
+            onClick={() => setTracksOpen((o) => !o)}
+            aria-expanded={tracksOpen}
+            className="flex w-full items-center justify-between rounded bg-sp-surface px-4 py-3 text-left transition-colors hover:bg-sp-surface-alt"
+          >
+            <span className="text-sm font-bold text-white">Titles ({album.tracks.length})</span>
+            <ChevronDownIcon
+              size={18}
+              className={`text-sp-muted transition-transform ${tracksOpen ? "rotate-180" : ""}`}
+            />
+          </button>
+          {tracksOpen && (
+          <div className="sp-fade-in mt-2">
           <div className="grid grid-cols-[24px_1fr_auto] items-center gap-4 border-b border-white/10 px-3 pb-2 text-xs font-semibold uppercase tracking-widest text-sp-dim">
             <span>#</span>
             <span>Title</span>
@@ -93,11 +134,13 @@ export default function AlbumPage() {
               <span className="text-sm text-sp-muted">{track.meta}</span>
             </div>
           ))}
+          </div>
+          )}
         </section>
 
         {/* Info */}
         <section className="mt-8 rounded-lg bg-sp-surface p-6">
-          <h2 className="text-lg font-bold text-white">About this {album.type.toLowerCase()}</h2>
+          <h2 className="text-lg font-bold text-white">About this project</h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-sp-muted">
             {album.post.description}
           </p>
@@ -127,7 +170,7 @@ export default function AlbumPage() {
           </p>
         </section>
 
-        <Carousel title="More by Max">
+        <Carousel title="Recommended">
           {others.map((a) => (
             <AlbumCard key={a.id} album={a} />
           ))}

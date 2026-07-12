@@ -1,5 +1,6 @@
 import { MobileNav } from "@/components/spotify/MobileNav";
 import { NowPlayingBar } from "@/components/spotify/NowPlayingBar";
+import { OnboardingTour } from "@/components/spotify/OnboardingTour";
 import { PlayerProvider } from "@/components/spotify/PlayerContext";
 import { SearchProvider } from "@/components/spotify/SearchContext";
 import { Sidebar } from "@/components/spotify/Sidebar";
@@ -21,6 +22,7 @@ export default function SpotifyShellLayout({
           </div>
           <NowPlayingBar />
           <MobileNav />
+          <OnboardingTour />
         </div>
       </SearchProvider>
     </PlayerProvider>

@@ -9,7 +9,7 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: "Max Lemoine-Gavoille — Portfolio",
+  title: "Max Lemoine-Gavoille - Portfolio",
   description:
     "Max Lemoine-Gavoille's portfolio as a Spotify-style discography: projects as albums, experience as compilations, and a verified artist profile.",
 };

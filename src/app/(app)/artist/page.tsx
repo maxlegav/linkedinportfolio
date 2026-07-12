@@ -10,7 +10,7 @@ import {
   me,
   popularAlbums,
   skills,
-  type AlbumType,
+  type AlbumGroup,
 } from "@/lib/spotify";
 import { AlbumCard } from "@/components/spotify/AlbumCard";
 import { Cover } from "@/components/spotify/Cover";
@@ -24,23 +24,18 @@ import {
 } from "@/components/spotify/icons";
 import { usePlayer } from "@/components/spotify/PlayerContext";
 
-const TABS: AlbumType[] = ["Album", "Single", "Compilation"];
-const TAB_LABELS: Record<AlbumType, string> = {
-  Album: "Albums",
-  Single: "Singles & EPs",
-  Compilation: "Compilations",
-};
+const TABS: AlbumGroup[] = ["Hackathons & SaaS founded", "Professional Experience", "Made by Max"];
 
-const HIGHLIGHTS = [
-  { emoji: "🛡️", label: "50+ penetration tests" },
-  { emoji: "💰", label: "€10k SaaS exit" },
-  { emoji: "🌍", label: "4 languages" },
-  { emoji: "🎓", label: "ECE Paris + Ajou University Seoul" },
+const HIGHLIGHTS: { emoji?: string; logoUrl?: string; label: string }[] = [
+  { logoUrl: "/capgemini-logo.svg", label: "Cybersecurity Consultant @ Capgemini" },
+  { emoji: "🏆", label: "Multiple hackathon builder (YC Paris Builds, SpaceTech)" },
+  { emoji: "💰", label: "Exited 1 SaaS" },
+  { emoji: "🚀", label: "Founder" },
 ];
 
 export default function ArtistPage() {
   const { play, current, isPlaying } = usePlayer();
-  const [tab, setTab] = useState<AlbumType>("Album");
+  const [tab, setTab] = useState<AlbumGroup>("Hackathons & SaaS founded");
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -121,6 +116,83 @@ export default function ArtistPage() {
           </div>
         </div>
 
+        {/* About */}
+        <section className="mt-10">
+          <h2 className="text-2xl font-bold tracking-tight text-white">About</h2>
+          <div className="mt-3 rounded-lg bg-sp-surface p-6 md:p-8">
+            <p className="max-w-3xl leading-relaxed text-sp-muted">{me.about}</p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {HIGHLIGHTS.map((h) => (
+                <div key={h.label} className="sp-rise rounded-md bg-sp-surface-alt p-4 transition-transform hover:-translate-y-1">
+                  {h.logoUrl ? (
+                    <img src={h.logoUrl} alt="" className="h-8 w-8 rounded bg-white object-contain p-0.5" />
+                  ) : (
+                    <span className="text-2xl">{h.emoji}</span>
+                  )}
+                  <p className="mt-2 text-sm font-bold text-white">{h.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 grid gap-8 md:grid-cols-2">
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-sp-dim">Education</h3>
+                {education.map((edu) => (
+                  <div key={edu.id} className="mt-4 flex gap-3">
+                    {edu.logoUrl && (
+                      <img src={edu.logoUrl} alt={edu.school} className="h-10 w-10 rounded bg-white object-contain p-0.5" />
+                    )}
+                    <div>
+                      <p className="text-sm font-bold text-white">{edu.school}</p>
+                      <p className="text-sm text-sp-muted">
+                        {edu.degree} - {edu.field}
+                      </p>
+                      <p className="text-xs text-sp-dim">
+                        {edu.startYear} – {edu.endYear} · {edu.location}
+                        {edu.gpa ? ` · GPA ${edu.gpa}` : ""}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                <h3 className="mt-8 text-sm font-bold uppercase tracking-widest text-sp-dim">
+                  Awards & Recognition
+                </h3>
+                {certifications.map((cert) => (
+                  <div key={cert.id} className="mt-3 flex items-center gap-3">
+                    {cert.logoUrl && (
+                      <img src={cert.logoUrl} alt={cert.issuer} className="h-8 w-8 rounded bg-white object-contain p-0.5" />
+                    )}
+                    <div>
+                      <p className="text-sm font-semibold text-white">{cert.name}</p>
+                      <p className="text-xs text-sp-dim">{cert.issuer}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-sp-dim">Genres (skills)</h3>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {skills.map((skill) => (
+                    <span
+                      key={skill.name}
+                      className="sp-pill bg-sp-surface-alt px-3 py-1.5 text-xs font-semibold text-white"
+                    >
+                      {skill.name}
+                    </span>
+                  ))}
+                </div>
+                <h3 className="mt-8 text-sm font-bold uppercase tracking-widest text-sp-dim">Languages</h3>
+                <ul className="mt-3 space-y-1 text-sm text-sp-muted">
+                  {me.languages.map((lang) => (
+                    <li key={lang}>{lang}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         {/* Popular */}
         <section>
           <h2 className="text-2xl font-bold tracking-tight text-white">Popular</h2>
@@ -183,88 +255,16 @@ export default function ArtistPage() {
                   tab === t ? "bg-white text-black" : "bg-sp-surface-alt text-white hover:bg-[#3e3e3e]"
                 }`}
               >
-                {TAB_LABELS[t]}
+                {t}
               </button>
             ))}
           </div>
           <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {albums
-              .filter((a) => a.type === tab)
+              .filter((a) => a.group === tab)
               .map((album) => (
                 <AlbumCard key={album.id} album={album} />
               ))}
-          </div>
-        </section>
-
-        {/* About */}
-        <section className="mt-10">
-          <h2 className="text-2xl font-bold tracking-tight text-white">About</h2>
-          <div className="mt-3 rounded-lg bg-sp-surface p-6 md:p-8">
-            <p className="max-w-3xl leading-relaxed text-sp-muted">{me.about}</p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {HIGHLIGHTS.map((h) => (
-                <div key={h.label} className="rounded-md bg-sp-surface-alt p-4">
-                  <span className="text-2xl">{h.emoji}</span>
-                  <p className="mt-2 text-sm font-bold text-white">{h.label}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 grid gap-8 md:grid-cols-2">
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-widest text-sp-dim">Education</h3>
-                {education.map((edu) => (
-                  <div key={edu.id} className="mt-4 flex gap-3">
-                    {edu.logoUrl && (
-                      <img src={edu.logoUrl} alt={edu.school} className="h-10 w-10 rounded bg-white object-contain p-0.5" />
-                    )}
-                    <div>
-                      <p className="text-sm font-bold text-white">{edu.school}</p>
-                      <p className="text-sm text-sp-muted">
-                        {edu.degree} — {edu.field}
-                      </p>
-                      <p className="text-xs text-sp-dim">
-                        {edu.startYear} – {edu.endYear} · {edu.location}
-                        {edu.gpa ? ` · GPA ${edu.gpa}` : ""}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-                <h3 className="mt-8 text-sm font-bold uppercase tracking-widest text-sp-dim">
-                  Awards & Recognition
-                </h3>
-                {certifications.map((cert) => (
-                  <div key={cert.id} className="mt-3 flex items-center gap-3">
-                    {cert.logoUrl && (
-                      <img src={cert.logoUrl} alt={cert.issuer} className="h-8 w-8 rounded bg-white object-contain p-0.5" />
-                    )}
-                    <div>
-                      <p className="text-sm font-semibold text-white">{cert.name}</p>
-                      <p className="text-xs text-sp-dim">{cert.issuer}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-widest text-sp-dim">Genres (skills)</h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {skills.map((skill) => (
-                    <span
-                      key={skill.name}
-                      className="sp-pill bg-sp-surface-alt px-3 py-1.5 text-xs font-semibold text-white"
-                    >
-                      {skill.name}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="mt-8 text-sm font-bold uppercase tracking-widest text-sp-dim">Languages</h3>
-                <ul className="mt-3 space-y-1 text-sm text-sp-muted">
-                  {me.languages.map((lang) => (
-                    <li key={lang}>{lang}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
           </div>
         </section>
 

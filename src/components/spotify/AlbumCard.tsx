@@ -8,7 +8,7 @@ import { PlayIcon } from "./icons";
 import { usePlayer } from "./PlayerContext";
 
 export function AlbumCard({ album }: { album: Album }) {
-  const { play } = usePlayer();
+  const { play, select } = usePlayer();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -29,6 +29,7 @@ export function AlbumCard({ album }: { album: Album }) {
   return (
     <Link
       href={`/album/${album.id}`}
+      onClick={() => select(album.id)}
       className="sp-card sp-fade-in group relative block w-full p-4"
     >
       <div className="relative">

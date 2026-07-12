@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import { albums, hackathonProjects, madeByMax, me, messagingContacts } from "@/lib/spotify";
+import { hackathonsAndSaas, madeByMax, me, professionalExperience } from "@/lib/spotify";
 import { AlbumCard } from "@/components/spotify/AlbumCard";
 import { Carousel } from "@/components/spotify/Carousel";
 
@@ -23,7 +23,7 @@ export default function HomePage() {
       <h1 className="text-3xl font-bold tracking-tight text-white">{greeting(hour)}</h1>
 
       {/* Featured artist */}
-      <section className="mt-6">
+      <section className="mt-6" data-tour="featured">
         <h2 className="mb-2 text-2xl font-bold tracking-tight text-white">Featured Artist</h2>
         <div className="flex flex-col items-center gap-6 rounded-lg bg-gradient-to-r from-[#1e3a2f] to-sp-surface p-6 md:flex-row md:p-8">
           <img
@@ -45,18 +45,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Carousel title="Hackathons & Projects">
-        {hackathonProjects.map((album) => (
-          <AlbumCard key={album.id} album={album} />
-        ))}
-      </Carousel>
-
-      <Carousel title="Professional Experience">
-        {albums
-          .filter((a) => a.type === "Compilation")
-          .map((album) => (
+      <div data-tour="carousels">
+        <Carousel title="Hackathons & SaaS founded">
+          {hackathonsAndSaas.map((album) => (
             <AlbumCard key={album.id} album={album} />
           ))}
+        </Carousel>
+      </div>
+
+      <Carousel title="Professional Experience">
+        {professionalExperience.map((album) => (
+          <AlbumCard key={album.id} album={album} />
+        ))}
       </Carousel>
 
       <Carousel title="Made by Max">
@@ -65,29 +65,24 @@ export default function HomePage() {
         ))}
       </Carousel>
 
-      {/* Recommendations */}
-      <section className="mt-8">
-        <h2 className="mb-2 text-2xl font-bold tracking-tight text-white">Recommended for you</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {messagingContacts.map((contact) => (
-            <div key={contact.id} className="sp-card p-4">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sp-surface-alt text-sm font-bold text-white">
-                  {contact.avatarUrl ? (
-                    <img src={contact.avatarUrl} alt={contact.name} className="h-full w-full object-cover" />
-                  ) : (
-                    contact.avatarLetter
-                  )}
-                </div>
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-bold text-white">{contact.name}</p>
-                  <p className="truncate text-xs text-sp-muted">{contact.relation}</p>
-                </div>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-sp-muted">“{contact.lastMessage}”</p>
-            </div>
-          ))}
-        </div>
+      {/* Wrapped mini-game */}
+      <section className="mt-8" data-tour="wrapped">
+        <Link
+          href="/wrapped"
+          className="sp-rise group relative block overflow-hidden rounded-lg p-6 md:p-8"
+          style={{ background: "linear-gradient(120deg, #1db954 0%, #1e3264 55%, #a72879 100%)" }}
+        >
+          <p className="text-xs font-bold uppercase tracking-widest text-white/80">Portfolio Wrapped</p>
+          <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">
+            Your 2025 Wrapped is here 🦖
+          </h2>
+          <p className="mt-2 max-w-xl text-sm text-white/80">
+            Play the dino runner, dodge the bugs and rack up streams while you discover Max&apos;s year in review.
+          </p>
+          <span className="sp-pill mt-4 inline-block bg-white px-5 py-2 text-sm font-bold text-black transition-transform group-hover:scale-105">
+            Play the mini-game
+          </span>
+        </Link>
       </section>
     </div>
   );

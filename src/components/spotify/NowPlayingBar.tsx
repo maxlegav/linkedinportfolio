@@ -19,13 +19,14 @@ import {
 } from "./icons";
 
 export function NowPlayingBar() {
-  const { current, isPlaying, liked, togglePlay, next, prev, toggleLike } = usePlayer();
+  const { current, isPlaying, liked, videoOpen, togglePlay, next, prev, toggleLike, openVideo, closeVideo } =
+    usePlayer();
   const [volume, setVolume] = useState(70);
-  const [videoOpen, setVideoOpen] = useState(false);
 
   const handlePlay = () => {
     if (!isPlaying && current.videoUrl) {
-      setVideoOpen(true);
+      openVideo();
+      return;
     }
     togglePlay();
   };
@@ -41,7 +42,7 @@ export function NowPlayingBar() {
             </div>
             <button
               aria-label="Close video"
-              onClick={() => setVideoOpen(false)}
+              onClick={closeVideo}
               className="text-sp-muted hover:text-white"
             >
               <CloseIcon size={24} />
@@ -58,7 +59,10 @@ export function NowPlayingBar() {
           </div>
         </div>
       )}
-    <footer className="fixed bottom-[56px] left-0 right-0 z-40 border-t border-[#282828] bg-black/90 backdrop-blur-[20px] md:bottom-0">
+    <footer
+      data-tour="player"
+      className="fixed bottom-[56px] left-0 right-0 z-40 border-t border-[#282828] bg-black/90 backdrop-blur-[20px] md:bottom-0"
+    >
       {/* Desktop */}
       <div className="hidden h-[90px] items-center px-4 md:flex">
         <div className="flex w-[30%] min-w-0 items-center gap-3">
@@ -130,7 +134,7 @@ export function NowPlayingBar() {
           />
           <button
             aria-label="Fullscreen"
-            onClick={() => current.videoUrl && setVideoOpen(true)}
+            onClick={() => current.videoUrl && openVideo()}
             className="hover:text-white"
           >
             <FullscreenIcon size={16} />
