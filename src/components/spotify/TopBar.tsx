@@ -6,12 +6,14 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { me } from "@/lib/spotify";
 import { ChevronLeftIcon, ChevronRightIcon, SearchIcon } from "./icons";
+import { useLang } from "./LanguageContext";
 import { useSearch } from "./SearchContext";
 
 export function TopBar() {
   const router = useRouter();
   const pathname = usePathname();
   const { query, setQuery } = useSearch();
+  const { lang, t, setLang } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -48,19 +50,26 @@ export function TopBar() {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="What do you want to explore?"
+            placeholder={t.searchPlaceholder}
             className="sp-pill w-full bg-white py-2.5 pl-10 pr-4 text-sm font-medium text-black outline-none placeholder:text-neutral-500"
           />
         </div>
       )}
 
       <div className="ml-auto flex items-center gap-3">
+        <button
+          aria-label="Switch language"
+          onClick={() => setLang(lang === "en" ? "fr" : "en")}
+          className="sp-pill bg-black/70 px-3 py-1.5 text-xs font-bold uppercase text-white transition-colors hover:bg-black"
+        >
+          {lang === "en" ? "FR" : "EN"}
+        </button>
         <a
           href={me.cvUrl}
           download
           className="sp-pill bg-sp-green px-4 py-1.5 text-sm font-bold text-black transition-transform hover:scale-105 hover:bg-sp-green-hover"
         >
-          Download CV
+          {t.downloadCv}
         </a>
         <div className="relative" ref={menuRef}>
           <button
@@ -81,7 +90,7 @@ export function TopBar() {
                 onClick={() => setMenuOpen(false)}
                 className="block rounded px-3 py-2 text-sm text-white hover:bg-[#3e3e3e]"
               >
-                Profile
+                {t.profile}
               </Link>
               <a
                 href={me.linkedinUrl}
@@ -102,7 +111,7 @@ export function TopBar() {
                 download
                 className="block rounded px-3 py-2 text-sm text-white hover:bg-[#3e3e3e]"
               >
-                Download CV
+                {t.downloadCv}
               </a>
             </div>
           )}

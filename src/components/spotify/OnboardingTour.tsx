@@ -1,49 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLang, type Dict } from "./LanguageContext";
 
 type Step = {
   /** CSS selector of the element to highlight; centered welcome card when omitted */
   selector?: string;
-  title: string;
-  text: string;
+  titleKey: keyof Dict;
+  textKey: keyof Dict;
 };
 
 const STEPS: Step[] = [
-  {
-    title: "Welcome to Max's Portfolio 🎧",
-    text: "This portfolio works like a music app: every project is an album, tags are the tracks, and likes are the streams. Here's a quick tour.",
-  },
-  {
-    selector: '[data-tour="sidebar"]',
-    title: "Your Library",
-    text: "Browse every project from the sidebar: Hackathons & SaaS founded, Professional Experience, and Made by Max.",
-  },
-  {
-    selector: '[data-tour="featured"]',
-    title: "Featured Artist",
-    text: "That's Max! Visit the artist page for the About section, highlights, and the full discography.",
-  },
-  {
-    selector: '[data-tour="carousels"]',
-    title: "Projects as albums",
-    text: "Scroll the carousels and click any cover to open the project page with all the details and links.",
-  },
-  {
-    selector: '[data-tour="player"]',
-    title: "Now playing",
-    text: "The player bar always shows the selected project. Press play to launch a demo video when one is available.",
-  },
-  {
-    selector: '[data-tour="wrapped"]',
-    title: "Portfolio Wrapped 🦖",
-    text: "Bonus: a Wrapped-style dino mini-game. Jump over the bugs and beat your high score!",
-  },
+  { titleKey: "tourWelcomeTitle", textKey: "tourWelcomeText" },
+  { selector: '[data-tour="sidebar"]', titleKey: "tourSidebarTitle", textKey: "tourSidebarText" },
+  { selector: '[data-tour="featured"]', titleKey: "tourFeaturedTitle", textKey: "tourFeaturedText" },
+  { selector: '[data-tour="carousels"]', titleKey: "tourCarouselsTitle", textKey: "tourCarouselsText" },
+  { selector: '[data-tour="player"]', titleKey: "tourPlayerTitle", textKey: "tourPlayerText" },
 ];
 
 const STORAGE_KEY = "portfolio-tour-done";
 
 export function OnboardingTour() {
+  const { t } = useLang();
   const [step, setStep] = useState(-1);
   const [rect, setRect] = useState<DOMRect | null>(null);
 
@@ -128,17 +106,17 @@ export function OnboardingTour() {
         <p className="text-xs font-bold uppercase tracking-widest text-sp-green">
           {step + 1} / {STEPS.length}
         </p>
-        <h3 className="mt-1 text-lg font-black text-white">{current.title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-sp-muted">{current.text}</p>
+        <h3 className="mt-1 text-lg font-black text-white">{t[current.titleKey]}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-sp-muted">{t[current.textKey]}</p>
         <div className="mt-4 flex items-center justify-between">
           <button onClick={finish} className="text-sm font-semibold text-sp-muted hover:text-white">
-            Skip
+            {t.skip}
           </button>
           <button
             onClick={nextStep}
             className="sp-pill bg-sp-green px-5 py-2 text-sm font-bold text-black transition-transform hover:scale-105 hover:bg-sp-green-hover"
           >
-            {step === STEPS.length - 1 ? "Done" : "Next"}
+            {step === STEPS.length - 1 ? t.done : t.next}
           </button>
         </div>
       </div>

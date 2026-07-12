@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useMemo, useState } from "react";
 import { albums, CATEGORY_DEFS, type AlbumGroup } from "@/lib/spotify";
 import { Cover } from "@/components/spotify/Cover";
+import { useLang } from "@/components/spotify/LanguageContext";
 import { PlayIcon } from "@/components/spotify/icons";
 import { usePlayer } from "@/components/spotify/PlayerContext";
 
@@ -22,6 +23,7 @@ const SORTS: Sort[] = ["Recents", "Recently added", "Alphabetical"];
 
 function LibraryContent() {
   const { play, select, current, isPlaying } = usePlayer();
+  const { t } = useLang();
   const searchParams = useSearchParams();
   const category = searchParams.get("category");
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
@@ -44,11 +46,11 @@ function LibraryContent() {
   return (
     <div className="px-4 pb-12 pt-4 md:px-8">
       <h1 className="text-2xl font-bold tracking-tight text-white">
-        {categoryDef ? `${categoryDef.emoji} ${categoryDef.label}` : "Your Library"}
+        {categoryDef ? `${categoryDef.emoji} ${categoryDef.label}` : t.yourLibrary}
       </h1>
       {categoryDef && (
         <Link href="/library" className="mt-1 inline-block text-sm text-sp-muted hover:text-white">
-          Clear category filter
+          {t.clearCategory}
         </Link>
       )}
 
@@ -61,7 +63,7 @@ function LibraryContent() {
               typeFilter === f.id ? "bg-white text-black" : "bg-sp-surface-alt text-white hover:bg-[#3e3e3e]"
             }`}
           >
-            {f.label}
+            {f.id === "All" ? t.all : f.label}
           </button>
         ))}
         <select
@@ -111,7 +113,7 @@ function LibraryContent() {
           );
         })}
         {items.length === 0 && (
-          <p className="mt-6 text-sm text-sp-muted">Nothing here yet - try another filter.</p>
+          <p className="mt-6 text-sm text-sp-muted">{t.nothingHere}</p>
         )}
       </div>
     </div>

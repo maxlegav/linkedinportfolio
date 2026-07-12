@@ -5,18 +5,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { albums, me } from "@/lib/spotify";
 import { Cover } from "./Cover";
+import { useLang, type Dict } from "./LanguageContext";
 import { usePlayer } from "./PlayerContext";
 import { DownloadIcon, HomeIcon, LibraryIcon, SearchIcon, SpotifyLogo } from "./icons";
 
-const NAV = [
-  { href: "/", label: "Home", Icon: HomeIcon },
-  { href: "/search", label: "Search", Icon: SearchIcon },
-  { href: "/library", label: "Your Library", Icon: LibraryIcon },
+const NAV: { href: string; labelKey: keyof Dict; Icon: typeof HomeIcon }[] = [
+  { href: "/", labelKey: "navHome", Icon: HomeIcon },
+  { href: "/search", labelKey: "navSearch", Icon: SearchIcon },
+  { href: "/library", labelKey: "navLibrary", Icon: LibraryIcon },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
   const { current, isPlaying } = usePlayer();
+  const { t } = useLang();
 
   return (
     <aside
@@ -31,7 +33,7 @@ export function Sidebar() {
       </div>
 
       <nav className="mt-6 px-2">
-        {NAV.map(({ href, label, Icon }) => {
+        {NAV.map(({ href, labelKey, Icon }) => {
           const active = pathname === href;
           return (
             <Link
@@ -42,7 +44,7 @@ export function Sidebar() {
               }`}
             >
               <Icon size={24} />
-              {label}
+              {t[labelKey]}
             </Link>
           );
         })}
@@ -64,7 +66,7 @@ export function Sidebar() {
           />
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold hover:text-white">{me.name}</p>
-            <p className="truncate text-xs text-sp-dim">Artist</p>
+            <p className="truncate text-xs text-sp-dim">{t.artist}</p>
           </div>
         </Link>
         {albums.map((album) => {
@@ -99,7 +101,7 @@ export function Sidebar() {
           download
           className="flex items-center gap-2 py-1 hover:text-white"
         >
-          <DownloadIcon size={14} /> Download CV
+          <DownloadIcon size={14} /> {t.downloadCv}
         </a>
         <a
           href={me.linkedinUrl}
