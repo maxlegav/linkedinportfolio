@@ -1,3 +1,4 @@
+import { LanguageProvider } from "@/components/spotify/LanguageContext";
 import { MobileNav } from "@/components/spotify/MobileNav";
 import { NowPlayingBar } from "@/components/spotify/NowPlayingBar";
 import { OnboardingTour } from "@/components/spotify/OnboardingTour";
@@ -12,8 +13,9 @@ export default function SpotifyShellLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <PlayerProvider>
-      <SearchProvider>
+    <LanguageProvider>
+      <PlayerProvider>
+        <SearchProvider>
         <div className="min-h-screen bg-sp-bg">
           <Sidebar />
           <div className="pb-[130px] md:ml-[240px] md:pb-[100px]">
@@ -24,7 +26,8 @@ export default function SpotifyShellLayout({
           <MobileNav />
           <OnboardingTour />
         </div>
-      </SearchProvider>
-    </PlayerProvider>
+        </SearchProvider>
+      </PlayerProvider>
+    </LanguageProvider>
   );
 }
