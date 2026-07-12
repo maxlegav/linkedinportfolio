@@ -37,7 +37,7 @@ export type ProjectPost = {
   tags: string[];
   imageUrl?: string;
   imageFit?: "cover" | "contain";
-  imagePadding?: "normal" | "tight";
+  imagePadding?: "normal" | "tight" | "none";
   links: ProjectLink[];
   likeCount?: number;
   commentCount?: number;
@@ -215,7 +215,7 @@ export const experiences: Experience[] = [
   },
   {
     id: "x2",
-    company: "SaaS — Autoinvoice & ShowYourBrand",
+    company: "SaaS - Autoinvoice & ShowYourBrand",
     role: "Founder & Co-Founder",
     location: "Paris, France / London, United Kingdom",
     startDate: "Jan 2022",
@@ -243,7 +243,7 @@ export const experiences: Experience[] = [
   },
   {
     id: "x4",
-    company: "BrandOrbit — International Marketing Startup",
+    company: "BrandOrbit - International Marketing Startup",
     role: "Co-Founder",
     location: "London, United Kingdom",
     startDate: "Jan 2025",
@@ -258,19 +258,19 @@ export const experiences: Experience[] = [
   },
 ];
 
-// Feed posts — ordered as requested
+// Feed posts - ordered as requested
 export const projectPosts: ProjectPost[] = [
   {
     id: "p0",
     author: me,
     createdAt: "Hackathon · Space tech · 2025",
-    title: "Hackathon — Satellite Collision Avoidance System",
+    title: "FOCUS - Hackathon Satellite Collision project",
     description:
       "I participated in a hackathon where we built FOCUS, a satellite collision avoidance analysis platform: For Orbital Cleanliness & Universal Safety. The project models satellites and orbital debris in LEO, lets users inspect objects like Starlink, NOAA-19 and Cosmos-2251 debris, compare orbits, tune physical/orbital/environmental parameters, and estimate whether an avoidance maneuver is required. The interface combines a 3D globe, satellite gallery, space weather controls, CDM-style reliability inputs, risk trend analysis and a policy engine with threshold, MDP and hybrid decision modes. The goal was to turn complex conjunction analysis into an operator-style dashboard that can recommend concrete actions such as verifying latest tracking updates and preparing a delta-V budget for a collision avoidance burn. The app is password-protected; click the link below and the password ryphal2026 will be copied automatically.",
     tags: ["Hackathon", "SpaceTech", "Satellite", "CollisionAvoidance", "OrbitalDebris", "3D", "ML", "MDP", "Next.js", "RiskAnalysis", "Simulation"],
     imageUrl: "/focus.png",
     imageFit: "contain",
-    imagePadding: "tight",
+    imagePadding: "none",
     links: [{ label: "Open Focus (password auto-copied)", url: "https://focus-mvp-pearl.vercel.app/", copyText: "ryphal2026" }],
     likeCount: 86,
     commentCount: 21,
@@ -279,13 +279,13 @@ export const projectPosts: ProjectPost[] = [
     id: "p11",
     author: me,
     createdAt: "Hackathon · Y Combinator · 2025",
-    title: "Alcatraz — Security layer for AI agents (Paris Builds Hackathon x Y Combinator)",
+    title: "Alcatraz - Security layer for AI agents (Paris Builds Hackathon x Y Combinator)",
     description:
-      "36 hours. No sleep. Build a company from scratch and pitch it for Y Combinator. That was the Paris Builds Hackathon in partnership with Y Combinator, powered by Anthropic, Hugging Face and Qube Research & Technologies. With Célia Lecat and Liam Szefner, we built Alcatraz, a security layer for AI agents. The idea is simple: just like startups delegate payments to Stripe, they can delegate agent security to us. Two lines of code to add, and they can focus entirely on their product, while staying compliant enough to close enterprise deals and actually sell. In 36 hours: 200 cold emails, ~10 live demos, and a previous hackathon winner who became our first customer. The room was the real thing — founders from Asia and all across Europe. What the format proves: in one weekend, you can go from zero to a product, a first customer, and a shot at a YC interview.",
+      "36 hours. No sleep. Build a company from scratch and pitch it for Y Combinator. That was the Paris Builds Hackathon in partnership with Y Combinator, powered by Anthropic, Hugging Face and Qube Research & Technologies. With Célia Lecat and Liam Szefner, we built Alcatraz, a security layer for AI agents. The idea is simple: just like startups delegate payments to Stripe, they can delegate agent security to us. Two lines of code to add, and they can focus entirely on their product, while staying compliant enough to close enterprise deals and actually sell. In 36 hours: 200 cold emails, ~10 live demos, and a previous hackathon winner who became our first customer. The room was the real thing - founders from Asia and all across Europe. What the format proves: in one weekend, you can go from zero to a product, a first customer, and a shot at a YC interview.",
     tags: ["Hackathon", "YCombinator", "Startup", "AI Agents", "Security", "Anthropic", "Hugging Face", "B2B", "Compliance", "Sales", "Pitch"],
     imageUrl: "/alcatraz-hackathon.jpg",
     imageFit: "contain",
-    imagePadding: "tight",
+    imagePadding: "none",
     links: [{ label: "LinkedIn post", url: "https://www.linkedin.com/feed/update/urn:li:activity:7477594335635546112/" }],
     likeCount: 41,
     commentCount: 3,
@@ -308,13 +308,13 @@ export const projectPosts: ProjectPost[] = [
     id: "p2",
     author: me,
     createdAt: "SaaS · Founded Jan 2022 · Exited 2023",
-    title: "Autoinvoice — Invoice automation SaaS (built, grown, sold for €10k)",
+    title: "Autoinvoice - Invoice automation SaaS (founded and exited)",
     description:
-      "Autoinvoice is an invoice automation SaaS I built entirely solo, from zero, for freelancers and small businesses. The idea came from a real pain point: spending too much time on admin instead of actual work. I designed the product, built the full stack (Next.js, Node.js, PostgreSQL), integrated Stripe for payments, built the onboarding flow, and handled customer support myself. Grew it to recurring revenue with real paying users, then exited for €10,000 via an online marketplace. The whole journey from idea to exit took under 18 months. It taught me everything about building a product people actually pay for: pricing, retention, churn, support, and knowing when to sell.",
+      "Autoinvoice is an invoice automation SaaS I built entirely solo, from zero, for freelancers and small businesses. The idea came from a real pain point: spending too much time on admin instead of actual work. I designed the product, built the full stack (Next.js, Node.js, PostgreSQL), integrated Stripe for payments, built the onboarding flow, and handled customer support myself. Grew it to recurring revenue with real paying users, then exited via an online marketplace. The whole journey from idea to exit took under 18 months. It taught me everything about building a product people actually pay for: pricing, retention, churn, support, and knowing when to sell.",
     tags: ["SaaS", "Founder", "Full-stack", "Exit", "Next.js", "PostgreSQL", "Stripe", "Automation", "Freelance Tools", "Startup", "Solo Founder", "Product", "B2B", "Invoice"],
     imageUrl: "/autoinvoic.png",
     imageFit: "contain",
-    imagePadding: "tight",
+    imagePadding: "none",
     links: [],
     likeCount: 98,
     commentCount: 11,
@@ -323,11 +323,13 @@ export const projectPosts: ProjectPost[] = [
     id: "p3",
     author: me,
     createdAt: "SaaS · Co-Founded 2024",
-    title: "ShowYourBrand — First GEO platform (40+ brands in early access)",
+    title: "ShowYourBrand - First GEO platform (40+ brands in early access)",
     description:
       "Co-founded ShowYourBrand, the first Generative Engine Optimization (GEO) platform. Think SEO, but for AI engines like ChatGPT, Perplexity, and Gemini. As AI-powered search replaces traditional search engines, brands need to appear in AI-generated answers. We built the full technical infrastructure and go-to-market strategy from scratch, reaching 40+ brands in early access. I handled the entire technical side: architecture, backend, frontend, and deployment.",
     tags: ["GEO", "AI", "SaaS", "Co-Founder", "SEO", "ChatGPT", "Perplexity", "LLM", "Marketing Tech", "Startup", "Next.js", "B2B", "Brand Visibility", "AI Search"],
     imageUrl: "/screenshot-showyourbrand.jpg",
+    imageFit: "contain",
+    imagePadding: "none",
     links: [{ label: "showyourbrand.app", url: "https://showyourbrand.app" }],
     likeCount: 76,
     commentCount: 9,
@@ -336,11 +338,13 @@ export const projectPosts: ProjectPost[] = [
     id: "p4",
     author: me,
     createdAt: "Extra-curricular · JEECE · ECE Paris",
-    title: "JEECE — Junior Enterprise: Technical and Commercial Lead",
+    title: "JEECE - Junior Enterprise: Technical and Commercial Lead",
     description:
       "Technical and commercial lead at JEECE, the Junior Entreprise of ECE Paris. Responsible for client scoping, full website design and development, project management, and supervising a team of student developers. JEECE connects companies with engineering students for real consulting missions. I led the technical side of client projects while also handling commercial prospecting and client relationships.",
     tags: ["Leadership", "Junior Enterprise", "Web", "Team", "ECE Paris", "Consulting", "Project Management", "Next.js", "Student", "Association", "Commercial", "Full-stack"],
     imageUrl: "/screenshot-jeece.jpg",
+    imageFit: "contain",
+    imagePadding: "none",
     links: [{ label: "jeece.fr", url: "https://www.jeece.fr" }],
     likeCount: 45,
     commentCount: 6,
@@ -349,7 +353,7 @@ export const projectPosts: ProjectPost[] = [
     id: "p5",
     author: me,
     createdAt: "Freelance · Client project · 2024",
-    title: "Les Chandelles — Full restaurant website",
+    title: "Les Chandelles - Full restaurant website",
     description:
       "Designed and developed the complete website for Les Chandelles, a Parisian restaurant. Built with Next.js, fully responsive and SEO-optimised. Integrated online reservation system, menu management, and a custom CMS so the client can update content without touching code. Handled deployment, domain setup, and ongoing maintenance.",
     tags: ["Next.js", "Freelance", "Restaurant", "SEO", "CMS", "Responsive", "Reservation System", "Deployment", "Tailwind CSS", "Full-stack", "Client Project", "Paris"],
@@ -362,12 +366,12 @@ export const projectPosts: ProjectPost[] = [
     id: "p6",
     author: me,
     createdAt: "Freelance · Client project · 2024",
-    title: "Recrutement Success — Full-stack recruitment platform",
+    title: "Recrutement Success - Full-stack recruitment platform",
     description:
       "Built the full-stack Recrutement Success platform from scratch for a recruitment consulting firm. Covers the complete stack: UI/UX design, business logic, database architecture, SEO, and production deployment. The platform handles candidate management, job listings, and client-facing dashboards. Part of 200+ billable hours delivered as a freelance developer, contributing to €20,000+/year in freelance revenue.",
     tags: ["Next.js", "Freelance", "Full-stack", "SEO", "Recruitment", "Dashboard", "PostgreSQL", "Deployment", "Tailwind CSS", "Client Project", "B2B", "SaaS"],
     imageUrl: legacyNextImage("/_next/static/media/Recrutement_succes.0e6a7421.jpeg", 1200),
-    imageFit: "contain",
+    imageFit: "cover",
     links: [{ label: "recrutement-success.com", url: "https://recrutement-success.com/" }],
     likeCount: 54,
     commentCount: 7,
@@ -376,7 +380,7 @@ export const projectPosts: ProjectPost[] = [
     id: "p7",
     author: me,
     createdAt: "Extra-curricular · No Larsen · ECE Paris",
-    title: "No Larsen — Student Event Creation and Management",
+    title: "No Larsen - Student Event Creation and Management",
     description:
       "Event creation and management with the No Larsen student association at ECE Paris. Responsible for venue partnerships, team coordination, logistics, and end-to-end event production. Organised multiple events from concept to execution, managing budgets, external partners, and a team of volunteers.",
     tags: ["Events", "Management", "Team", "ECE Paris", "Student", "Association", "Logistics", "Partnerships", "Leadership", "Organisation"],
@@ -389,11 +393,13 @@ export const projectPosts: ProjectPost[] = [
     id: "p8",
     author: me,
     createdAt: "Extra-curricular · BrandOrbit · London",
-    title: "BrandOrbit — International Marketing Startup",
+    title: "BrandOrbit - International Marketing Startup",
     description:
-      "Co-founded BrandOrbit, an international marketing startup based in London. Implemented targeted digital prospecting strategies and LinkedIn outreach campaigns to identify and acquire international clients, using lead scoring methodologies to secure 10+ global clients. Also assisted SaaS founders in establishing presence across Asian markets with a focus on South Korea. Francesca Bushell is one of our clients — we built her portfolio site and supported her brand presence internationally.",
+      "Co-founded BrandOrbit, an international marketing startup based in London. Implemented targeted digital prospecting strategies and LinkedIn outreach campaigns to identify and acquire international clients, using lead scoring methodologies to secure 10+ global clients. Also assisted SaaS founders in establishing presence across Asian markets with a focus on South Korea. Francesca Bushell is one of our clients - we built her portfolio site and supported her brand presence internationally.",
     tags: ["Marketing", "Co-Founder", "International", "B2B", "Freelance", "London", "LinkedIn", "Lead Generation", "Asia", "South Korea", "Digital Marketing", "Startup", "Portfolio"],
     imageUrl: "/screenshot-brandorbit.png",
+    imageFit: "contain",
+    imagePadding: "none",
     links: [
       { label: "francesca-bushell-portfolio.vercel.app", url: "https://francesca-bushell-portfolio.vercel.app/" },
       { label: "LinkedIn page", url: "https://www.linkedin.com/company/brand-orbit-international-marketing/" },
@@ -405,11 +411,13 @@ export const projectPosts: ProjectPost[] = [
     id: "p9",
     author: me,
     createdAt: "Freelance · Startup contribution · 2025",
-    title: "Fedhubs — Core backend infrastructure",
+    title: "Fedhubs - Core backend infrastructure",
     description:
       "Contributed to Fedhubs early technical infrastructure during the company founding phase. Designed and implemented core backend systems including API architecture, database schema, and authentication flows. The goal was to build a scalable foundation ready for production from day one, avoiding costly rewrites later.",
     tags: ["Backend", "Startup", "Architecture", "API", "Node.js", "PostgreSQL", "Authentication", "Scalability", "Freelance", "Infrastructure", "Early Stage"],
     imageUrl: "/screenshot-fedhubs.jpg",
+    imageFit: "contain",
+    imagePadding: "none",
     links: [{ label: "fedhubs.org", url: "https://fedhubs.org" }],
     likeCount: 22,
     commentCount: 3,
@@ -420,9 +428,11 @@ export const projectPosts: ProjectPost[] = [
     createdAt: "Project · Freelance demo · 2023",
     title: "Apple iPhone 15 landing page clone",
     description:
-      "A demo site I built to show potential freelance clients what I can do. Pixel-accurate rebuild of the Apple iPhone 15 product page, fully responsive with smooth scroll animations, 3D model interactions, and video transitions. This was my sales tool as a freelance developer: show, don't tell. It worked — several clients hired me after seeing this.",
+      "A demo site I built to show potential freelance clients what I can do. Pixel-accurate rebuild of the Apple iPhone 15 product page, fully responsive with smooth scroll animations, 3D model interactions, and video transitions. This was my sales tool as a freelance developer: show, don't tell. It worked - several clients hired me after seeing this.",
     tags: ["UI", "Front-end", "React", "Animation", "Freelance Demo", "Apple", "3D", "GSAP", "Three.js", "Responsive", "Portfolio", "Showcase", "Next.js"],
     imageUrl: legacyNextImage("/_next/static/media/iphone.a1bde86b.png", 1200),
+    imageFit: "contain",
+    imagePadding: "none",
     links: [{ label: "Live demo", url: "https://iphone-doc.vercel.app/" }],
     likeCount: 63,
     commentCount: 8,
@@ -432,7 +442,7 @@ export const projectPosts: ProjectPost[] = [
 export const messagingContacts: MessagingContact[] = [
   {
     id: "m1",
-    name: "Capgemini — Senior Manager",
+    name: "Capgemini - Senior Manager",
     relation: "Cybersecurity · Recommendation",
     lastMessage: "Max has been an outstanding consultant. His technical depth on pentests and his ability to manage client relationships simultaneously is rare at his level. Highly recommend.",
     timeLabel: "1h ago",
@@ -442,7 +452,7 @@ export const messagingContacts: MessagingContact[] = [
   },
   {
     id: "m2",
-    name: "Recrutement Success — CEO",
+    name: "Recrutement Success - CEO",
     relation: "Freelance client · Recommendation",
     lastMessage: "Max delivered our platform on time and above expectations. He handled everything: design, dev, SEO, deployment. We saw a 40% increase in organic traffic within 2 months. Will work with him again.",
     timeLabel: "3h ago",
@@ -451,7 +461,7 @@ export const messagingContacts: MessagingContact[] = [
   },
   {
     id: "m3",
-    name: "JEECE — President",
+    name: "JEECE - President",
     relation: "Junior Enterprise · Recommendation",
     lastMessage: "As technical lead at JEECE, Max completely transformed how we deliver client projects. He built our website, trained the dev team, and brought in new clients. Exceptional profile.",
     timeLabel: "Yesterday",
@@ -461,7 +471,7 @@ export const messagingContacts: MessagingContact[] = [
   },
   {
     id: "m4",
-    name: "Fedhubs — Co-Founder",
+    name: "Fedhubs - Co-Founder",
     relation: "Startup · Recommendation",
     lastMessage: "Max built our entire backend infrastructure from scratch in record time. Clean architecture, well-documented, and production-ready. Exactly what an early-stage startup needs.",
     timeLabel: "2d ago",

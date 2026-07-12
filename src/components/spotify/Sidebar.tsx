@@ -19,7 +19,10 @@ export function Sidebar() {
   const { current, isPlaying } = usePlayer();
 
   return (
-    <aside className="fixed bottom-[90px] left-0 top-0 z-40 hidden w-[240px] flex-col bg-black md:flex">
+    <aside
+      data-tour="sidebar"
+      className="fixed bottom-[90px] left-0 top-0 z-40 hidden w-[240px] flex-col bg-black md:flex"
+    >
       <div className="px-6 pt-6">
         <Link href="/" className="flex items-center gap-2 text-white">
           <SpotifyLogo size={32} />
@@ -82,7 +85,7 @@ export function Sidebar() {
                   {album.shortTitle}
                 </p>
                 <p className="truncate text-xs text-sp-dim">
-                  {album.type} · {album.year}
+                  {album.group} · {album.year}
                 </p>
               </div>
             </Link>

@@ -15,6 +15,8 @@ export function Cover({
   rounded?: string;
 }) {
   const img = album.post.imageUrl;
+  const padding =
+    album.post.imagePadding === "none" ? "p-0" : album.post.imagePadding === "tight" ? "p-[4%]" : "p-[12%]";
   return (
     <div
       className={`relative aspect-square overflow-hidden ${rounded} ${className}`}
@@ -25,7 +27,7 @@ export function Cover({
           src={img}
           alt={album.title}
           className={`absolute inset-0 h-full w-full ${
-            album.post.imageFit === "contain" ? "object-contain p-[12%]" : "object-cover"
+            album.post.imageFit === "contain" ? `object-contain ${padding}` : "object-cover"
           }`}
           loading="lazy"
         />

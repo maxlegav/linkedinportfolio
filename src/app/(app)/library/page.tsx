@@ -3,25 +3,25 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useMemo, useState } from "react";
-import { albums, CATEGORY_DEFS, type AlbumType } from "@/lib/spotify";
+import { albums, CATEGORY_DEFS, type AlbumGroup } from "@/lib/spotify";
 import { Cover } from "@/components/spotify/Cover";
 import { PlayIcon } from "@/components/spotify/icons";
 import { usePlayer } from "@/components/spotify/PlayerContext";
 
-type TypeFilter = "All" | AlbumType;
+type TypeFilter = "All" | AlbumGroup;
 type Sort = "Recents" | "Recently added" | "Alphabetical";
 
 const TYPE_FILTERS: { id: TypeFilter; label: string }[] = [
   { id: "All", label: "All" },
-  { id: "Album", label: "Albums" },
-  { id: "Single", label: "Playlists" },
-  { id: "Compilation", label: "Artists" },
+  { id: "Hackathons & SaaS founded", label: "Hackathons & SaaS founded" },
+  { id: "Professional Experience", label: "Professional Experience" },
+  { id: "Made by Max", label: "Made by Max" },
 ];
 
 const SORTS: Sort[] = ["Recents", "Recently added", "Alphabetical"];
 
 function LibraryContent() {
-  const { play, current, isPlaying } = usePlayer();
+  const { play, select, current, isPlaying } = usePlayer();
   const searchParams = useSearchParams();
   const category = searchParams.get("category");
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("All");
@@ -32,7 +32,7 @@ function LibraryContent() {
   const items = useMemo(() => {
     let list = albums;
     if (categoryDef) list = list.filter((a) => a.categories.includes(categoryDef.id));
-    if (typeFilter !== "All") list = list.filter((a) => a.type === typeFilter);
+    if (typeFilter !== "All") list = list.filter((a) => a.group === typeFilter);
     if (sort === "Alphabetical") {
       list = [...list].sort((a, b) => a.shortTitle.localeCompare(b.shortTitle));
     } else if (sort === "Recently added") {
@@ -78,22 +78,23 @@ function LibraryContent() {
         </select>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {items.map((album) => {
           const playing = current.id === album.id && isPlaying;
           return (
             <Link
               key={album.id}
               href={`/album/${album.id}`}
-              className="group flex items-center gap-4 rounded px-3 py-2 hover:bg-white/10"
+              onClick={() => select(album.id)}
+              className="sp-rise group flex items-center gap-4 rounded-lg bg-sp-surface p-3 transition-colors hover:bg-sp-surface-alt"
             >
-              <Cover album={album} className="h-12 w-12 shrink-0" rounded="rounded" />
+              <Cover album={album} className="h-20 w-20 shrink-0 md:h-24 md:w-24" rounded="rounded" />
               <div className="min-w-0 flex-1">
-                <p className={`truncate text-sm font-semibold ${playing ? "text-sp-green" : "text-white"}`}>
+                <p className={`text-lg font-black leading-tight md:text-xl ${playing ? "text-sp-green" : "text-white"}`}>
                   {album.shortTitle}
                 </p>
-                <p className="truncate text-xs text-sp-muted">
-                  {album.type} · {album.year}
+                <p className="mt-1 truncate text-sm text-sp-muted">
+                  {album.group} · {album.year}
                 </p>
               </div>
               <button
@@ -102,15 +103,15 @@ function LibraryContent() {
                   e.preventDefault();
                   play(album.id);
                 }}
-                className="sp-pill hidden h-9 w-9 items-center justify-center bg-sp-green text-black opacity-0 transition-opacity group-hover:opacity-100 md:flex"
+                className="sp-pill hidden h-11 w-11 items-center justify-center bg-sp-green text-black opacity-0 transition-opacity group-hover:opacity-100 md:flex"
               >
-                <PlayIcon size={16} />
+                <PlayIcon size={18} />
               </button>
             </Link>
           );
         })}
         {items.length === 0 && (
-          <p className="mt-6 text-sm text-sp-muted">Nothing here yet — try another filter.</p>
+          <p className="mt-6 text-sm text-sp-muted">Nothing here yet - try another filter.</p>
         )}
       </div>
     </div>
