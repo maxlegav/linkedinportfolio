@@ -101,8 +101,14 @@ export function OnboardingTour() {
 
   const tooltipStyle: React.CSSProperties = highlighted
     ? rect.top > window.innerHeight / 2
-      ? { left: Math.min(Math.max(rect.left, 16), window.innerWidth - 336), bottom: window.innerHeight - rect.top + 16 }
-      : { left: Math.min(Math.max(rect.left, 16), window.innerWidth - 336), top: rect.bottom + 16 }
+      ? {
+          left: Math.min(Math.max(rect.left, 16), window.innerWidth - 336),
+          bottom: Math.max(window.innerHeight - rect.top + 16, 16),
+        }
+      : {
+          left: Math.min(Math.max(rect.left + rect.width / 2, 16), window.innerWidth - 336),
+          top: Math.min(rect.bottom + 16, window.innerHeight - 236),
+        }
     : { left: "50%", top: "50%", transform: "translate(-50%, -50%)" };
 
   return (
