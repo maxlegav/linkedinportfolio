@@ -41,6 +41,7 @@ const COVER_STYLES: Record<string, CoverStyle> = {
   p0: { gradient: "linear-gradient(135deg, #0b1026 0%, #04060f 60%, #000 100%)", color: "#16213e", label: "FOCUS" },
   p11: { gradient: "linear-gradient(135deg, #f26522 0%, #7a2e0e 100%)", color: "#c2410c", label: "Alcatraz" },
   p1: { gradient: "linear-gradient(135deg, #0070AD 0%, #003a5c 100%)", color: "#0070AD", label: "Capgemini" },
+  p12: { gradient: "linear-gradient(135deg, #7c3aed 0%, #1e1b4b 60%, #0f0a1e 100%)", color: "#6d28d9", label: "Moûsai" },
   p2: { gradient: "linear-gradient(135deg, #6b7280 0%, #374151 100%)", color: "#4b5563", label: "Autoinvoice" },
   p3: { gradient: "linear-gradient(135deg, #111 0%, #7c2d5e 55%, #c2410c 100%)", color: "#9d174d", label: "SYB" },
   p4: { gradient: "linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%)", color: "#b91c1c", label: "JEECE" },
@@ -56,6 +57,7 @@ const SHORT_TITLES: Record<string, string> = {
   p0: "FOCUS · Satellite Collision Avoidance",
   p11: "Alcatraz · Security for AI Agents",
   p1: "Capgemini · Cybersecurity Consultant",
+  p12: "Moûsai · Text-to-Music Diffusion",
   p2: "Autoinvoice · Founded and exited",
   p3: "ShowYourBrand · GEO Platform",
   p4: "JEECE · Junior Enterprise",
@@ -74,6 +76,7 @@ const GROUPS: Record<string, AlbumGroup> = {
   p3: "Hackathons & SaaS founded",
   p8: "Hackathons & SaaS founded",
   p1: "Professional Experience",
+  p12: "Professional Experience",
   p4: "Professional Experience",
   p7: "Professional Experience",
   p5: "Made by Max",
@@ -97,6 +100,7 @@ const CATEGORIES: Record<string, string[]> = {
   p0: ["hackathons", "ai-ml"],
   p11: ["hackathons", "cybersecurity", "saas"],
   p1: ["cybersecurity", "ai-ml"],
+  p12: ["ai-ml", "education"],
   p2: ["saas"],
   p3: ["saas", "ai-ml"],
   p4: ["events", "education", "freelance"],
@@ -156,12 +160,12 @@ export const popularAlbums = byIds(["p11", "p0", "p1", "p2", "p3"]);
 
 /** Home carousels (an album can appear in more than one) */
 export const hackathonsAndSaas = byIds(["p11", "p0", "p2", "p3", "p8"]);
-export const professionalExperience = byIds(["p1", "p4", "p7", "p2", "p3"]);
+export const professionalExperience = byIds(["p1", "p12", "p4", "p7", "p2", "p3"]);
 export const madeByMax = byIds(["p5", "p6", "p9", "p10"]);
 
 /** Everything, projects & hackathons first - used for recommendations */
 export const recommendedAlbums = byIds([
-  "p11", "p0", "p2", "p3", "p8", "p10", "p1", "p4", "p7", "p5", "p6", "p9",
+  "p11", "p0", "p2", "p3", "p8", "p10", "p1", "p12", "p4", "p7", "p5", "p6", "p9",
 ]);
 
 export { me, experiences, education, certifications, skills, messagingContacts };

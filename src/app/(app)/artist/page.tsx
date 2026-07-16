@@ -273,7 +273,7 @@ export default function ArtistPage() {
           <h2 className="text-2xl font-bold tracking-tight text-white">Fans also like</h2>
           <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
             {[
-              { label: "LinkedIn", href: me.linkedinUrl, sub: "Connect with Max" },
+              { label: "LinkedIn", href: me.linkedinUrl, sub: "Connect with me" },
               { label: "CV Download", href: me.cvUrl, sub: "PDF resume" },
               { label: "Email", href: `mailto:${me.email}`, sub: me.email },
               { label: "Phone", href: `tel:${me.phone.replace(/\s/g, "")}`, sub: me.phone },
