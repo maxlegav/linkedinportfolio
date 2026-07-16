@@ -154,13 +154,43 @@ export const skills: Skill[] = [
   { name: "Kali Linux",   iconUrl: "/kali-logo.svg" },
   { name: "Prompt Eng.",  iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
   { name: "LLM Deploy",   iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  // Cybersecurity
+  { name: "OpenCTI",              iconUrl: "/opencti-logo.png" },
+  { name: "Censys",               iconUrl: "/shodan-logo.png" },
+  { name: "OWASP",                iconUrl: "/portswigger-logo.svg" },
+  { name: "Penetration Testing",  iconUrl: "/kali-logo.svg" },
+  { name: "Threat Intelligence",  iconUrl: "/misp-logo.png" },
+  { name: "IAM",                  iconUrl: "/kali-logo.svg" },
+  { name: "Cryptography",         iconUrl: "/kali-logo.svg" },
+  { name: "LLM Security",         iconUrl: "/kali-logo.svg" },
+  // AI
+  { name: "Machine Learning",     iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
+  { name: "Diffusion Models",     iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
+  { name: "RAG",                  iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "Claude / Anthropic API", iconUrl: "/claude-logo.svg" },
+  { name: "Hugging Face",         iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  // Soft skills
+  { name: "Leadership",           iconUrl: "" },
+  { name: "Project Management",   iconUrl: "" },
+  { name: "Client Communication", iconUrl: "" },
+  { name: "Public Speaking & Pitching", iconUrl: "" },
+  { name: "Entrepreneurship",     iconUrl: "" },
+  { name: "Teamwork",             iconUrl: "" },
+  { name: "Adaptability",         iconUrl: "" },
+  { name: "Problem Solving",      iconUrl: "" },
 ];
 
 export const certifications: Certification[] = [
-  { id: "c1", name: "AI Essentials (98%)",                     issuer: "Google",                 logoLetter: "G", color: "#4285F4", logoUrl: "/google-logo.svg" },
-  { id: "c2", name: "Foundations of Project Management (91%)", issuer: "Google",                 logoLetter: "G", color: "#34A853", logoUrl: "/google-logo.svg" },
-  { id: "c3", name: "Cyber Threat Intelligence",               issuer: "MISP / OpenCTI / Shodan", logoLetter: "C", color: "#e11d48", logoUrl: "/misp-logo.png" },
-  { id: "c4", name: "AWS Cloud Practitioner",                  issuer: "Amazon Web Services",    logoLetter: "A", color: "#FF9900", logoUrl: "/aws-logo.svg" },
+  { id: "c1", name: "AI Fluency for Small Businesses",              issuer: "Anthropic",                                logoLetter: "A", color: "#d97757", logoUrl: "/anthropic-logo.svg" },
+  { id: "c2", name: "Claude 101",                                   issuer: "Anthropic",                                logoLetter: "A", color: "#d97757", logoUrl: "/claude-logo.svg" },
+  { id: "c3", name: "Claude Code 101",                              issuer: "Anthropic",                                logoLetter: "A", color: "#d97757", logoUrl: "/claude-logo.svg" },
+  { id: "c4", name: "Claude Platform 101",                          issuer: "Anthropic",                                logoLetter: "A", color: "#d97757", logoUrl: "/claude-logo.svg" },
+  { id: "c5", name: "AI Business Professional",                     issuer: "Microsoft",                                logoLetter: "M", color: "#00A4EF", logoUrl: "/microsoft-logo.svg" },
+  { id: "c6", name: "AI-900 - Azure AI Fundamentals",               issuer: "Microsoft",                                logoLetter: "M", color: "#00A4EF", logoUrl: "/microsoft-logo.svg" },
+  { id: "c7", name: "AI Essentials (98%)",                          issuer: "Google",                                   logoLetter: "G", color: "#4285F4", logoUrl: "/google-logo.svg" },
+  { id: "c8", name: "Foundations of Project Management (91.02%)",   issuer: "Google",                                   logoLetter: "G", color: "#34A853", logoUrl: "/google-logo.svg" },
+  { id: "c9", name: "Threat Intelligence - MISP, OpenCTI, Shodan & Censys", issuer: "EduGroupe",                        logoLetter: "E", color: "#e11d48", logoUrl: "/misp-logo.png" },
+  { id: "c10", name: "AWS Cloud Practitioner",                      issuer: "Amazon Web Services",                      logoLetter: "A", color: "#FF9900", logoUrl: "/aws-logo.svg" },
 ];
 
 // Education logos updated with new files
@@ -291,6 +321,18 @@ export const projectPosts: ProjectPost[] = [
     commentCount: 3,
   },
   {
+    id: "p12",
+    author: me,
+    createdAt: "Research · AI · Academic project · 2024",
+    title: "Moûsai - Efficient Text-to-Music Diffusion Models (research reproduction)",
+    description:
+      "As part of my studies, I researched Text-to-Music Diffusion Models - AI systems that generate music from text prompts. I studied the ACL 2024 paper 'Moûsai: Efficient Text-to-Music Diffusion Models' in depth and reproduced its experiments, running the tests described in the paper to validate its results on efficient long-context latent diffusion for high-quality, real-time-capable music generation. This project gave me hands-on experience with diffusion architectures, audio latent spaces, and the practical challenges of reproducing state-of-the-art AI research.",
+    tags: ["AI", "Research", "Diffusion Models", "Text-to-Music", "Audio", "Deep Learning", "PyTorch", "ACL 2024", "Reproduction", "Generative AI", "Academic"],
+    links: [{ label: "Read the paper (ACL 2024)", url: "https://aclanthology.org/2024.acl-long.437.pdf" }],
+    likeCount: 35,
+    commentCount: 4,
+  },
+  {
     id: "p1",
     author: me,
     createdAt: "Experience · Capgemini · From Sep 2025",
@@ -401,7 +443,7 @@ export const projectPosts: ProjectPost[] = [
     imageFit: "contain",
     imagePadding: "none",
     links: [
-      { label: "francesca-bushell-portfolio.vercel.app", url: "https://francesca-bushell-portfolio.vercel.app/" },
+      { label: "brand-orbit.vercel.app", url: "https://brand-orbit.vercel.app/" },
       { label: "LinkedIn page", url: "https://www.linkedin.com/company/brand-orbit-international-marketing/" },
     ],
     likeCount: 27,
@@ -684,7 +726,7 @@ export const notifications = [
 export const feedAsideItems = [
   {
     title: "Download CV",
-    subtitle: "Get Max's resume as PDF.",
+    subtitle: "Get my resume as PDF.",
     href: me.cvUrl,
   },
   {
