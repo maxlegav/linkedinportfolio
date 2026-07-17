@@ -59,13 +59,20 @@ export default function ArtistPage() {
         <img
           src={me.avatarUrl}
           alt={me.name}
-          className="pointer-events-none absolute bottom-0 right-4 h-[38vh] max-h-80 object-contain opacity-90 md:right-16"
+          className="pointer-events-none absolute bottom-0 right-0 h-[26vh] max-h-80 object-contain opacity-60 sm:h-[32vh] sm:opacity-80 md:right-16 lg:h-[38vh] lg:opacity-90"
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(22,40,31,0.85) 0%, rgba(22,40,31,0.45) 55%, rgba(22,40,31,0) 100%)",
+          }}
         />
         <div className="relative z-10">
           <p className="flex items-center gap-2 text-sm font-semibold text-white">
             <VerifiedIcon size={22} /> Verified Artist
           </p>
-          <h1 className="mt-2 text-5xl font-black tracking-tight text-white md:text-7xl">
+          <h1 className="mt-2 text-4xl font-black tracking-tight text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl lg:text-7xl">
             {me.name}
           </h1>
           <p className="mt-4 text-sm font-medium text-white/90 md:text-base">
