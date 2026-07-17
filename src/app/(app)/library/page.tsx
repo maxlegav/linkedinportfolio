@@ -80,7 +80,7 @@ function LibraryContent() {
         </select>
       </div>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      <div className="mt-4 grid gap-3 lg:grid-cols-2">
         {items.map((album) => {
           const playing = current.id === album.id && isPlaying;
           return (
@@ -92,7 +92,7 @@ function LibraryContent() {
             >
               <Cover album={album} className="h-20 w-20 shrink-0 md:h-24 md:w-24" rounded="rounded" />
               <div className="min-w-0 flex-1">
-                <p className={`text-lg font-black leading-tight md:text-xl ${playing ? "text-sp-green" : "text-white"}`}>
+                <p className={`break-words text-lg font-black leading-tight md:text-xl ${playing ? "text-sp-green" : "text-white"}`}>
                   {album.shortTitle}
                 </p>
                 <p className="mt-1 truncate text-sm text-sp-muted">

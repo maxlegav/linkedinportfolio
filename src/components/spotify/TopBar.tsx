@@ -45,7 +45,7 @@ export function TopBar() {
       </div>
 
       {pathname === "/search" && (
-        <div className="relative mx-auto w-full max-w-sm">
+        <div className="relative mr-2 w-full min-w-0 max-w-sm md:mx-auto">
           <SearchIcon size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
           <input
             value={query}
@@ -56,7 +56,7 @@ export function TopBar() {
         </div>
       )}
 
-      <div className="ml-auto flex items-center gap-3">
+      <div className="ml-auto flex shrink-0 items-center gap-2 md:gap-3">
         <button
           aria-label="Switch language"
           onClick={() => setLang(lang === "en" ? "fr" : "en")}
@@ -67,7 +67,7 @@ export function TopBar() {
         <a
           href={me.cvUrl}
           download
-          className="sp-pill bg-sp-green px-4 py-1.5 text-sm font-bold text-black transition-transform hover:scale-105 hover:bg-sp-green-hover"
+          className="sp-pill hidden whitespace-nowrap bg-sp-green px-4 py-1.5 text-sm font-bold text-black transition-transform hover:scale-105 hover:bg-sp-green-hover sm:block"
         >
           {t.downloadCv}
         </a>
