@@ -51,6 +51,12 @@ const COVER_STYLES: Record<string, CoverStyle> = {
   p8: { gradient: "linear-gradient(135deg, #dc2626 0%, #f8fafc 160%)", color: "#dc2626", label: "BrandOrbit" },
   p9: { gradient: "linear-gradient(135deg, #334155 0%, #0c4a6e 100%)", color: "#33506b", label: "Fedhubs" },
   p10: { gradient: "linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%)", color: "#8a94a6", label: "iPhone 15" },
+  p13: { gradient: "linear-gradient(135deg, #00915a 0%, #00432a 100%)", color: "#00915a", label: "BNP Paribas" },
+  p14: { gradient: "linear-gradient(135deg, #0f172a 0%, #14532d 100%)", color: "#14532d", label: "CyberDrill #2" },
+  p15: { gradient: "linear-gradient(135deg, #1e1b4b 0%, #d97757 120%)", color: "#4338ca", label: "Accel" },
+  p16: { gradient: "linear-gradient(135deg, #005293 0%, #fecb00 140%)", color: "#005293", label: "SWEYoung" },
+  p17: { gradient: "linear-gradient(135deg, #db2777 0%, #581c87 100%)", color: "#a21caf", label: "Generathon" },
+  p18: { gradient: "linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%)", color: "#1e3a8a", label: "Muller" },
 };
 
 const SHORT_TITLES: Record<string, string> = {
@@ -67,6 +73,12 @@ const SHORT_TITLES: Record<string, string> = {
   p8: "BrandOrbit · London",
   p9: "Fedhubs",
   p10: "iPhone 15 Clone",
+  p13: "BNP Paribas · Harness research",
+  p14: "CyberDrill CTF · 2nd / 95",
+  p15: "Accel AI Innovate · Guardrail",
+  p16: "SWEYoung · Stockholm",
+  p17: "Generathon · AI video hackathon",
+  p18: "Groupe Muller · Technical Sales",
 };
 
 const GROUPS: Record<string, AlbumGroup> = {
@@ -83,6 +95,12 @@ const GROUPS: Record<string, AlbumGroup> = {
   p6: "Made by Max",
   p9: "Made by Max",
   p10: "Made by Max",
+  p13: "Professional Experience",
+  p14: "Hackathons & SaaS founded",
+  p15: "Hackathons & SaaS founded",
+  p16: "Hackathons & SaaS founded",
+  p17: "Professional Experience",
+  p18: "Professional Experience",
 };
 
 export const CATEGORY_DEFS: { id: string; label: string; emoji: string; color: string }[] = [
@@ -110,6 +128,12 @@ const CATEGORIES: Record<string, string[]> = {
   p8: ["international", "events"],
   p9: ["freelance", "saas"],
   p10: ["freelance"],
+  p13: ["ai-ml", "cybersecurity", "education"],
+  p14: ["hackathons", "cybersecurity"],
+  p15: ["hackathons", "ai-ml", "cybersecurity"],
+  p16: ["hackathons", "international"],
+  p17: ["events", "ai-ml"],
+  p18: ["international"],
 };
 
 /** Add per-project demo videos here, e.g. p0: "/videos/focus-demo.mp4" */
@@ -156,16 +180,16 @@ function byIds(ids: string[]): Album[] {
   return ids.map((id) => albumById(id)).filter((a): a is Album => Boolean(a));
 }
 
-export const popularAlbums = byIds(["p11", "p0", "p1", "p2", "p3"]);
+export const popularAlbums = byIds(["p1", "p13", "p11", "p14", "p2"]);
 
 /** Home carousels (an album can appear in more than one) */
-export const hackathonsAndSaas = byIds(["p11", "p0", "p2", "p3", "p8"]);
-export const professionalExperience = byIds(["p1", "p12", "p4", "p7", "p2", "p3"]);
+export const hackathonsAndSaas = byIds(["p11", "p15", "p14", "p16", "p0", "p2", "p3", "p8"]);
+export const professionalExperience = byIds(["p1", "p13", "p18", "p17", "p12", "p4", "p7", "p2", "p3"]);
 export const madeByMax = byIds(["p5", "p6", "p9", "p10"]);
 
 /** Everything, projects & hackathons first - used for recommendations */
 export const recommendedAlbums = byIds([
-  "p11", "p0", "p2", "p3", "p8", "p10", "p1", "p12", "p4", "p7", "p5", "p6", "p9",
+  "p11", "p15", "p14", "p16", "p0", "p2", "p3", "p8", "p10", "p1", "p13", "p18", "p17", "p12", "p4", "p7", "p5", "p6", "p9",
 ]);
 
 export { me, experiences, education, certifications, skills, messagingContacts };

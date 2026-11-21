@@ -98,10 +98,10 @@ export type MessagingContact = {
 
 export const me: User = {
   name: "Max Lemoine-Gavoille",
-  headline: "Engineering student @ ECE Paris · Cybersecurity Consultant @ Capgemini · SaaS Founder",
+  headline: "Cybersecurity Consultant @ Capgemini · Founder of AI & SaaS ventures · Engineering student @ ECE Paris",
   location: "Paris, France",
   about:
-    "Engineering student specializing in cybersecurity, artificial intelligence and SaaS creation. Strong background in data, machine learning, and scalable web applications, combined with entrepreneurial experience and team leadership.",
+    "Cybersecurity consultant at Capgemini and founder of multiple AI and SaaS ventures, looking to scale at the intersection of deep tech and business. Engineering student in cybersecurity and AI at ECE Paris (GPA 3.75/4). Outside work: chess at 2000 Elo (top 1% worldwide), judo black belt, and 15 years of guitar.",
   avatarUrl: "/photo_profil copie-Photoroom.png",
   bannerUrl: "/banner-eiffel.jpg",
   connectionsLabel: "500+ connections",
@@ -109,7 +109,7 @@ export const me: User = {
   linkedinUrl: "https://www.linkedin.com/in/max-lemoine-gavoille-173158260/",
   email: "maxlemgav@gmail.com",
   phone: "+33 661089000",
-  languages: ["French (native)", "English (C1/C2 – TOEIC 940 / IELTS 6.5)", "German (academic)", "Korean (academic)"],
+  languages: ["French (native)", "English (C1/C2 – TOEIC 940 / IELTS 7.5)", "German (academic)", "Korean (academic)"],
 };
 
 // All skills from CV
@@ -181,6 +181,8 @@ export const skills: Skill[] = [
 ];
 
 export const certifications: Certification[] = [
+  { id: "c11", name: "OpenAI PartnerU early-access track (6 practitioner certifications)", issuer: "OpenAI",               logoLetter: "O", color: "#10a37f" },
+  { id: "c12", name: "Claude Certified Associate · Forward Deployed Engineer (early-access track)", issuer: "Anthropic", logoLetter: "A", color: "#d97757", logoUrl: "/anthropic-logo.svg" },
   { id: "c1", name: "AI Fluency for Small Businesses",              issuer: "Anthropic",                                logoLetter: "A", color: "#d97757", logoUrl: "/anthropic-logo.svg" },
   { id: "c2", name: "Claude 101",                                   issuer: "Anthropic",                                logoLetter: "A", color: "#d97757", logoUrl: "/claude-logo.svg" },
   { id: "c3", name: "Claude Code 101",                              issuer: "Anthropic",                                logoLetter: "A", color: "#d97757", logoUrl: "/claude-logo.svg" },
@@ -188,7 +190,7 @@ export const certifications: Certification[] = [
   { id: "c5", name: "AI Business Professional",                     issuer: "Microsoft",                                logoLetter: "M", color: "#00A4EF", logoUrl: "/microsoft-logo.svg" },
   { id: "c6", name: "AI-900 - Azure AI Fundamentals",               issuer: "Microsoft",                                logoLetter: "M", color: "#00A4EF", logoUrl: "/microsoft-logo.svg" },
   { id: "c7", name: "AI Essentials (98%)",                          issuer: "Google",                                   logoLetter: "G", color: "#4285F4", logoUrl: "/google-logo.svg" },
-  { id: "c8", name: "Foundations of Project Management (91.02%)",   issuer: "Google",                                   logoLetter: "G", color: "#34A853", logoUrl: "/google-logo.svg" },
+  { id: "c8", name: "Google Project Management (91%)"            ,   issuer: "Google",                                   logoLetter: "G", color: "#34A853", logoUrl: "/google-logo.svg" },
   { id: "c9", name: "Threat Intelligence - MISP, OpenCTI, Shodan & Censys", issuer: "EduGroupe",                        logoLetter: "E", color: "#e11d48", logoUrl: "/misp-logo.png" },
   { id: "c10", name: "AWS Cloud Practitioner",                      issuer: "Amazon Web Services",                      logoLetter: "A", color: "#FF9900", logoUrl: "/aws-logo.svg" },
 ];
@@ -203,10 +205,10 @@ export const education: Education[] = [
     startYear: "Sep 2022",
     endYear: "Jun 2027",
     location: "Paris, France",
-    gpa: "3.7 / 4.0",
+    gpa: "3.75 / 4",
     courses: ["Machine Learning", "Systèmes d'information", "AI Injection", "Penetration Testing", "Cryptographie", "Algorithms"],
     description:
-      "Conducted red & blue team simulations targeting real-world cyberattacks (OWASP), exploiting and remediating web vulnerabilities and privilege escalation scenarios. Led an Identity and Access Management consulting case, designing secure access control strategies for a 300+ user enterprise environment.",
+      "Red and blue team simulations of real-world attacks (OWASP), exploiting and remediating web vulnerabilities and privilege escalation scenarios. IAM consulting case designing access control for a 300+ user enterprise.",
     logoLetter: "E",
     logoUrl: "/ece.png",
   },
@@ -218,9 +220,10 @@ export const education: Education[] = [
     startYear: "Sep 2024",
     endYear: "Mar 2025",
     location: "Seoul, South Korea",
+    gpa: "88%",
     courses: ["AI Model Development", "Computer Programming for AI & Data", "Machine Learning", "Algorithms"],
     description:
-      "Researched Text-to-Music Diffusion Models (AI systems that generate music from text prompts). Built and trained a Chess AI model on personal gameplay data, reaching 1500 Elo.",
+      "Researched text-to-music diffusion models. Built and trained a chess AI on my own games, reaching 1500 Elo.",
     logoLetter: "A",
     logoUrl: "/ajou.jpeg",
   },
@@ -230,7 +233,7 @@ export const experiences: Experience[] = [
   {
     id: "x1",
     company: "Capgemini",
-    role: "Cybersecurity Consultant",
+    role: "Cybersecurity Consultant (Apprenticeship)",
     location: "Paris, France",
     startDate: "Sep 2025",
     endDate: "Present",
@@ -238,37 +241,63 @@ export const experiences: Experience[] = [
     color: "#0070AD",
     logoUrl: "/capgemini-logo.svg",
     bullets: [
-      "Conducted 50+ penetration tests across Web, API, LLM, Network, AWS and Active Directory environments for 30+ clients, leading full audit lifecycles from scoping to delivery, generating €150,000+ in annual revenue.",
-      "Built an AI infrastructure enabling secure code analysis and automated reporting, deploying a fully on-premise LLM stack ensuring zero client data exposure, adopted by a team of 20 consultants and cutting reporting time by ~30%.",
-      "Acted as de facto project manager on a major key account, coordinating scoping meetings, audit planning and billing cycles across 50+ missions per year.",
+      "Selected for an OpenAI early-access partnership in London and San Francisco on unreleased models, then acting as the internal forward-deployed engineer embedding them into Capgemini's audit delivery.",
+      "Led 50+ pentests for 30+ clients across Web, API, LLM, Network, AWS and Active Directory environments, managing the full audit lifecycle from scoping to delivery: €72.5K in annual revenue.",
+      "Project manager on a major key account, coordinating scoping, audit planning and billing across 4 countries.",
+    ],
+  },
+  {
+    id: "x5",
+    company: "BNP Paribas",
+    role: "Final-Year Engineering Project, 4-person team",
+    location: "Paris, France",
+    startDate: "Dec 2026",
+    endDate: "Feb 2027",
+    logoLetter: "B",
+    color: "#00915a",
+    bullets: [
+      "Security and compliance lead on an open-source harness governing multi-agent LLMs for financial advice.",
+      "Publication target: NeurIPS, subject to BNP validation, with an arXiv preprint and open-source release.",
     ],
   },
   {
     id: "x2",
-    company: "SaaS - Autoinvoice & ShowYourBrand",
+    company: "Founder & Freelance - Multiple SaaS ventures",
     role: "Founder & Co-Founder",
-    location: "Paris, France / London, United Kingdom",
+    location: "Paris, France",
     startDate: "Jan 2022",
     endDate: "Present",
     logoLetter: "S",
     color: "#7c3aed",
     bullets: [
-      "Built and sold Autoinvoice, an invoice automation SaaS for freelancers and SMEs. Developed the full stack solo from zero, grew it to recurring revenue, then exited for €10,000 via an online marketplace.",
-      "Co-founded ShowYourBrand, the first Generative Engine Optimization (GEO) platform. Think SEO, but for AI engines like ChatGPT and Perplexity. Built the full technical infrastructure and go-to-market strategy, reaching 40+ brands in early access.",
+      "Autoinvoice, founder (Jun 2025 - Feb 2026): invoicing SaaS for freelancers and SMEs, built entirely from scratch on my own; grew it to €700+ MRR and exited for €10K.",
+      "ShowYourBrand, co-founder (May 2026): led the technical side of a GEO platform that helps brands measure and improve how they appear in AI answers on ChatGPT, Claude and others.",
     ],
   },
   {
     id: "x3",
-    company: "Freelance Developer & Tech Consultant",
-    role: "Freelance Developer & Tech Consultant",
-    location: "Remote",
-    startDate: "Jan 2025",
-    endDate: "Present",
+    company: "Freelance Engineer",
+    role: "Full-stack SaaS, web and mobile apps",
+    location: "Paris, France / Remote",
+    startDate: "2022",
+    endDate: "2025",
     logoLetter: "F",
     color: "#059669",
     bullets: [
-      "Delivered 200+ billable hours for clients (Recrutement-Success, leschandelles.com), building full-stack web applications from scratch, handling deployment, SEO and maintenance. €20,000+/year in freelance revenue.",
-      "Contributed to Fedhubs early technical infrastructure, designing and implementing core backend systems during the company founding phase, leading to a scalable architecture ready for production.",
+      "€25K+ per year delivering full-stack SaaS, web and mobile apps for several SMEs (Recrutement Success, Les Chandelles, Fedhubs), handling deployment, SEO and maintenance.",
+    ],
+  },
+  {
+    id: "x6",
+    company: "Groupe Muller",
+    role: "Technical Sales Intern",
+    location: "Paris, France / Frankfurt, Germany",
+    startDate: "Mar 2025",
+    endDate: "May 2025",
+    logoLetter: "M",
+    color: "#1e3a8a",
+    bullets: [
+      "Participated in the ISH trade fair in Frankfurt (17-21 March 2025), supporting a heat pump launch. Generated 14 qualified leads, converting into 9 sales in Q2 2025: €1.07M in revenue at a 38% margin.",
     ],
   },
   {
@@ -291,6 +320,54 @@ export const experiences: Experience[] = [
 // Feed posts - ordered as requested
 export const projectPosts: ProjectPost[] = [
   {
+    id: "p13",
+    author: me,
+    createdAt: "Experience · BNP Paribas · Dec 2026 - Feb 2027",
+    title: "BNP Paribas - Harness Matters for Small Models (final-year research project)",
+    description:
+      "Final-year engineering project proposed by BNP Paribas CIB, in a 4-person team (Robin Quériaux, Victor Mazloum, Romain Mallet and me). The quality of an LLM assistant depends not only on the model but on its harness: the code that decides what the model sees, which tools it may call, how many calls it makes and how its answers are checked. With a small, fast model held fixed, we study how far harness engineering alone can push answer quality against ground truths at the lowest latency, focusing on two problems simple harnesses handle poorly: precise follow-ups on details stated early in long conversations, and tool overload when many MCP servers are exposed. Deliverables: SwiftHarness, an open-source modular harness with tracing and deterministic replay; two public test suites (FollowUp-Bench and ToolScale, from 8 to 512 tools); and a research paper. I am the security and compliance lead: verification, security and robustness of a harness governing multi-agent LLMs for financial advice. Publication target: NeurIPS, subject to BNP validation, with an arXiv preprint and open-source release.",
+    tags: ["Research", "LLM Agents", "Agent Harness", "MCP", "Context Engineering", "Security", "Compliance", "Small Models", "Latency", "Open Source", "NeurIPS", "BNP Paribas"],
+    links: [{ label: "Read the project statement (PDF)", url: "/BNP-Paribas-PFE-Harness-Matters-for-Small-Models.pdf" }],
+    likeCount: 64,
+    commentCount: 7,
+  },
+  {
+    id: "p15",
+    author: me,
+    createdAt: "Hackathon · Accel AI Innovate · Paris · Oct 2026",
+    title: "Accel AI Innovate - Deterministic guardrail for banking and insurance AI agents",
+    description:
+      "At Accel AI Innovate in Paris, I built a deterministic guardrail that sits between a bank's or insurer's AI agent and its actions, blocking rule-breaking actions in milliseconds, using Anthropic models and Cognition. One of 300+ participants; we won €250 in credits and a pitch slot.",
+    tags: ["Hackathon", "Accel", "AI Agents", "Guardrails", "Security", "Compliance", "Banking", "Insurance", "Anthropic", "Cognition", "Pitch"],
+    links: [],
+    likeCount: 52,
+    commentCount: 6,
+  },
+  {
+    id: "p14",
+    author: me,
+    createdAt: "CTF · Campus CyberDrill · Paris · Sep 2026",
+    title: "Campus CyberDrill, Offensive Edition - 2nd out of 95",
+    description:
+      "Ranked 2nd out of 95 participants at Campus CyberDrill, Offensive Edition, a capture-the-flag competition in Paris, against teams from Hermès, Ministère des Armées, PwC and Wavestone.",
+    tags: ["CTF", "Offensive Security", "Pentest", "Red Team", "Cybersecurity", "Competition", "Paris"],
+    links: [],
+    likeCount: 58,
+    commentCount: 5,
+  },
+  {
+    id: "p16",
+    author: me,
+    createdAt: "Hackathon · SWEYoung · Stockholm · Jun 2026",
+    title: "SWEYoung - Selected among 60 builders out of 500+ applicants",
+    description:
+      "Selected among 60 builders out of 500+ applicants for a 48-hour hackathon in Stockholm.",
+    tags: ["Hackathon", "Stockholm", "International", "Builders", "48 hours", "Startup"],
+    links: [],
+    likeCount: 33,
+    commentCount: 2,
+  },
+  {
     id: "p0",
     author: me,
     createdAt: "Hackathon · Space tech · 2025",
@@ -308,10 +385,10 @@ export const projectPosts: ProjectPost[] = [
   {
     id: "p11",
     author: me,
-    createdAt: "Hackathon · Y Combinator · 2025",
-    title: "Alcatraz - Security layer for AI agents (Paris Builds Hackathon x Y Combinator)",
+    createdAt: "Hackathon · Y Combinator × Anthropic · Paris · Jun 2026",
+    title: "Alcatraz - Agentic red-teaming harness (Y Combinator × Anthropic Hackathon)",
     description:
-      "36 hours. No sleep. Build a company from scratch and pitch it for Y Combinator. That was the Paris Builds Hackathon in partnership with Y Combinator, powered by Anthropic, Hugging Face and Qube Research & Technologies. With Célia Lecat and Liam Szefner, we built Alcatraz, a security layer for AI agents. The idea is simple: just like startups delegate payments to Stripe, they can delegate agent security to us. Two lines of code to add, and they can focus entirely on their product, while staying compliant enough to close enterprise deals and actually sell. In 36 hours: 200 cold emails, ~10 live demos, and a previous hackathon winner who became our first customer. The room was the real thing - founders from Asia and all across Europe. What the format proves: in one weekend, you can go from zero to a product, a first customer, and a shot at a YC interview.",
+      "36 hours. No sleep. Build a company from scratch and pitch it for Y Combinator. That was the Paris Builds Hackathon in partnership with Y Combinator, powered by Anthropic, Hugging Face and Qube Research & Technologies. With Célia Lecat and Liam Szefner, we built Alcatraz, an agentic red-teaming harness and security layer for AI agents. The idea is simple: just like startups delegate payments to Stripe, they can delegate agent security to us. Two lines of code to add, and they can focus entirely on their product, while staying compliant enough to close enterprise deals and actually sell. In 36 hours: 200 cold outreaches, 5 demos, and 1 paying client - a previous hackathon winner who became our first customer. The room was the real thing - founders from Asia and all across Europe. What the format proves: in one weekend, you can go from zero to a product, a first customer, and a shot at a YC interview.",
     tags: ["Hackathon", "YCombinator", "Startup", "AI Agents", "Security", "Anthropic", "Hugging Face", "B2B", "Compliance", "Sales", "Pitch"],
     imageUrl: "/alcatraz-hackathon.jpg",
     imageFit: "contain",
@@ -335,11 +412,11 @@ export const projectPosts: ProjectPost[] = [
   {
     id: "p1",
     author: me,
-    createdAt: "Experience · Capgemini · From Sep 2025",
+    createdAt: "Experience · Capgemini · Sep 2025 - Present",
     title: "Cybersecurity Consultant @ Capgemini",
     description:
-      "50+ penetration tests across Web, API, LLM, Network, AWS and Active Directory for 30+ clients. Led full audit lifecycles from scoping to remediation, generating €150,000+ in annual revenue. Built a fully on-premise LLM stack for automated secure code analysis and report generation, adopted by 20 consultants and cutting reporting time by 30%. Acted as de facto project manager on a major key account, coordinating scoping meetings, audit planning and billing cycles across 50+ missions per year.",
-    tags: ["Pentest", "LLM", "AWS", "Active Directory", "OWASP", "Cybersecurity", "Red Team", "Blue Team", "API Security", "Network Security", "Consulting", "AI", "Capgemini"],
+      "Cybersecurity consultant (apprenticeship) at Capgemini. Selected for an OpenAI early-access partnership in London and San Francisco on unreleased models, then acting as the internal forward-deployed engineer embedding them into Capgemini's audit delivery. Led 50+ pentests for 30+ clients across Web, API, LLM, Network, AWS and Active Directory environments, managing the full audit lifecycle from scoping to delivery: €72.5K in annual revenue. Project manager on a major key account, coordinating scoping, audit planning and billing across 4 countries.",
+    tags: ["Pentest", "OpenAI", "Forward Deployed Engineer", "LLM", "AWS", "Active Directory", "OWASP", "Cybersecurity", "Red Team", "Blue Team", "API Security", "Network Security", "Consulting", "AI", "Capgemini"],
     imageUrl: "/capgemini-logo.svg",
     imageFit: "contain",
     links: [{ label: "capgemini.com", url: "https://www.capgemini.com" }],
@@ -349,10 +426,10 @@ export const projectPosts: ProjectPost[] = [
   {
     id: "p2",
     author: me,
-    createdAt: "SaaS · Founded Jan 2022 · Exited 2023",
+    createdAt: "SaaS · Jun 2025 - Feb 2026 · Exited",
     title: "Autoinvoice - Invoice automation SaaS (founded and exited)",
     description:
-      "Autoinvoice is an invoice automation SaaS I built entirely solo, from zero, for freelancers and small businesses. The idea came from a real pain point: spending too much time on admin instead of actual work. I designed the product, built the full stack (Next.js, Node.js, PostgreSQL), integrated Stripe for payments, built the onboarding flow, and handled customer support myself. Grew it to recurring revenue with real paying users, then exited via an online marketplace. The whole journey from idea to exit took under 18 months. It taught me everything about building a product people actually pay for: pricing, retention, churn, support, and knowing when to sell.",
+      "Autoinvoice is an invoice automation SaaS I built entirely solo, from zero, for freelancers and small businesses. The idea came from a real pain point: spending too much time on admin instead of actual work. I designed the product, built the full stack (Next.js, Node.js, PostgreSQL), integrated Stripe for payments, built the onboarding flow, and handled customer support myself. Grew it to €700+ MRR with real paying users, then exited for €10K. The whole journey from idea to exit took about 9 months. It taught me everything about building a product people actually pay for: pricing, retention, churn, support, and knowing when to sell.",
     tags: ["SaaS", "Founder", "Full-stack", "Exit", "Next.js", "PostgreSQL", "Stripe", "Automation", "Freelance Tools", "Startup", "Solo Founder", "Product", "B2B", "Invoice"],
     imageUrl: "/autoinvoic.png",
     imageFit: "contain",
@@ -364,11 +441,11 @@ export const projectPosts: ProjectPost[] = [
   {
     id: "p3",
     author: me,
-    createdAt: "SaaS · Co-Founded 2024",
-    title: "ShowYourBrand - First GEO platform (40+ brands in early access)",
+    createdAt: "SaaS · Co-Founded May 2026",
+    title: "ShowYourBrand - GEO platform for brand visibility in AI answers",
     description:
-      "Co-founded ShowYourBrand, the first Generative Engine Optimization (GEO) platform. Think SEO, but for AI engines like ChatGPT, Perplexity, and Gemini. As AI-powered search replaces traditional search engines, brands need to appear in AI-generated answers. We built the full technical infrastructure and go-to-market strategy from scratch, reaching 40+ brands in early access. I handled the entire technical side: architecture, backend, frontend, and deployment.",
-    tags: ["GEO", "AI", "SaaS", "Co-Founder", "SEO", "ChatGPT", "Perplexity", "LLM", "Marketing Tech", "Startup", "Next.js", "B2B", "Brand Visibility", "AI Search"],
+      "Co-founded ShowYourBrand in May 2026, a Generative Engine Optimization (GEO) platform that helps brands measure and improve how they appear in AI answers on ChatGPT, Claude and others. Think SEO, but for AI engines. I led the entire technical side: architecture, backend, frontend, and deployment.",
+    tags: ["GEO", "AI", "SaaS", "Co-Founder", "SEO", "ChatGPT", "Claude", "LLM", "Marketing Tech", "Startup", "Next.js", "B2B", "Brand Visibility", "AI Search"],
     imageUrl: "/screenshot-showyourbrand.jpg",
     imageFit: "contain",
     imagePadding: "none",
@@ -382,7 +459,7 @@ export const projectPosts: ProjectPost[] = [
     createdAt: "Extra-curricular · JEECE · ECE Paris",
     title: "JEECE - Junior Enterprise: Technical and Commercial Lead",
     description:
-      "Technical and commercial lead at JEECE, the Junior Entreprise of ECE Paris. Responsible for client scoping, full website design and development, project management, and supervising a team of student developers. JEECE connects companies with engineering students for real consulting missions. I led the technical side of client projects while also handling commercial prospecting and client relationships.",
+      "Technical and commercial lead at JEECE, the Junior Entreprise of ECE Paris: 14 clients and €70.7K invoiced. Responsible for client scoping, full website design and development, project management, and supervising a team of student developers. JEECE connects companies with engineering students for real consulting missions. I led the technical side of client projects while also handling commercial prospecting and client relationships.",
     tags: ["Leadership", "Junior Enterprise", "Web", "Team", "ECE Paris", "Consulting", "Project Management", "Next.js", "Student", "Association", "Commercial", "Full-stack"],
     imageUrl: "/screenshot-jeece.jpg",
     imageFit: "contain",
@@ -410,7 +487,7 @@ export const projectPosts: ProjectPost[] = [
     createdAt: "Freelance · Client project · 2024",
     title: "Recrutement Success - Full-stack recruitment platform",
     description:
-      "Built the full-stack Recrutement Success platform from scratch for a recruitment consulting firm. Covers the complete stack: UI/UX design, business logic, database architecture, SEO, and production deployment. The platform handles candidate management, job listings, and client-facing dashboards. Part of 200+ billable hours delivered as a freelance developer, contributing to €20,000+/year in freelance revenue.",
+      "Built the full-stack Recrutement Success platform from scratch for a recruitment consulting firm. Covers the complete stack: UI/UX design, business logic, database architecture, SEO, and production deployment. The platform handles candidate management, job listings, and client-facing dashboards. Part of 200+ billable hours delivered as a freelance developer, contributing to €25K+ per year in freelance revenue.",
     tags: ["Next.js", "Freelance", "Full-stack", "SEO", "Recruitment", "Dashboard", "PostgreSQL", "Deployment", "Tailwind CSS", "Client Project", "B2B", "SaaS"],
     imageUrl: legacyNextImage("/_next/static/media/Recrutement_succes.0e6a7421.jpeg", 1200),
     imageFit: "cover",
@@ -424,12 +501,36 @@ export const projectPosts: ProjectPost[] = [
     createdAt: "Extra-curricular · No Larsen · ECE Paris",
     title: "No Larsen - Student Event Creation and Management",
     description:
-      "Event creation and management with the No Larsen student association at ECE Paris. Responsible for venue partnerships, team coordination, logistics, and end-to-end event production. Organised multiple events from concept to execution, managing budgets, external partners, and a team of volunteers.",
+      "Event creation and management with No Larsen, the student music society at ECE Paris. Produced 3 events for about 1,000 attendees, handling ticketing, the website, logistics and venues, from concept to execution with budgets, external partners and a team of volunteers.",
     tags: ["Events", "Management", "Team", "ECE Paris", "Student", "Association", "Logistics", "Partnerships", "Leadership", "Organisation"],
     imageUrl: "/screenshot-nolarsen.jpg",
     links: [{ label: "nolarsen.fr", url: "https://www.nolarsen.fr" }],
     likeCount: 28,
     commentCount: 5,
+  },
+  {
+    id: "p17",
+    author: me,
+    createdAt: "Extra-curricular · Generathon · Paris · 2026",
+    title: "Generathon - Business Development & Event Manager",
+    description:
+      "Business development and event manager for Generathon, a monthly 24-hour AI video hackathon: 114 creators, 104 films and 1.2M+ views. I develop sponsorships alongside Red Bull, CapCut, Station F, HEXA and Le Motif (1.7M followers).",
+    tags: ["Events", "Business Development", "Sponsorship", "AI Video", "Hackathon", "Generative AI", "Station F", "Red Bull", "CapCut", "Leadership"],
+    links: [],
+    likeCount: 47,
+    commentCount: 5,
+  },
+  {
+    id: "p18",
+    author: me,
+    createdAt: "Experience · Groupe Muller · Mar - May 2025",
+    title: "Groupe Muller - Technical Sales Intern (ISH Frankfurt)",
+    description:
+      "Technical sales internship at Groupe Muller between Paris and Frankfurt. I took part in the ISH trade fair in Frankfurt (17-21 March 2025), supporting a heat pump launch. Generated 14 qualified leads, converting into 9 sales in Q2 2025: €1.07M in revenue at a 38% margin.",
+    tags: ["Sales", "B2B", "Trade Fair", "Frankfurt", "International", "Lead Generation", "Heat Pumps", "Internship"],
+    links: [],
+    likeCount: 26,
+    commentCount: 2,
   },
   {
     id: "p8",
@@ -555,7 +656,7 @@ export const notifications = [
   },
   {
     id: "n2",
-    title: "ShowYourBrand just hit 40 brands in early access. Your GEO platform is gaining traction.",
+    title: "ShowYourBrand: brands are measuring their visibility in ChatGPT and Claude answers.",
     time: "2h ago",
     type: "network",
     unread: true,

@@ -15,11 +15,12 @@ export function Cover({
   rounded?: string;
 }) {
   const img = album.post.imageUrl;
+  const longestWord = Math.max(...album.cover.label.split(/\s+/).map((w) => w.length));
   const padding =
     album.post.imagePadding === "none" ? "p-0" : album.post.imagePadding === "tight" ? "p-[4%]" : "p-[12%]";
   return (
     <div
-      className={`relative aspect-square overflow-hidden ${rounded} ${className}`}
+      className={`@container relative aspect-square overflow-hidden ${rounded} ${className}`}
       style={{ background: album.cover.gradient }}
     >
       {img ? (
@@ -33,7 +34,10 @@ export function Cover({
         />
       ) : (
         <div className="absolute inset-0 flex items-end p-[8%]">
-          <span className="font-black leading-none text-white [font-size:clamp(0.8rem,18cqw,2.2rem)]">
+          <span
+            className="font-black leading-none text-white"
+            style={{ fontSize: `min(18cqw, ${(125 / longestWord).toFixed(1)}cqw, 2.2rem)` }}
+          >
             {album.cover.label}
           </span>
         </div>
