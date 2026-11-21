@@ -28,9 +28,9 @@ const TABS: AlbumGroup[] = ["Hackathons & SaaS founded", "Professional Experienc
 
 const HIGHLIGHTS: { emoji?: string; logoUrl?: string; label: string }[] = [
   { logoUrl: "/capgemini-logo.svg", label: "Cybersecurity Consultant @ Capgemini" },
-  { emoji: "🏆", label: "Multiple hackathon builder (YC Paris Builds, SpaceTech)" },
-  { emoji: "💰", label: "Exited 1 SaaS" },
-  { emoji: "🚀", label: "Founder" },
+  { emoji: "🏆", label: "Hackathons: YC × Anthropic, Accel, SWEYoung · 2nd/95 CyberDrill CTF" },
+  { emoji: "💰", label: "Exited Autoinvoice (€700+ MRR, sold for €10K)" },
+  { emoji: "🤖", label: "OpenAI & Anthropic early-access partner" },
 ];
 
 export default function ArtistPage() {
@@ -76,7 +76,7 @@ export default function ArtistPage() {
             {me.name}
           </h1>
           <p className="mt-4 text-sm font-medium text-white/90 md:text-base">
-            Engineering Student · Cybersecurity Consultant · SaaS Founder
+            Cybersecurity Consultant · AI & SaaS Founder · Engineering Student
           </p>
         </div>
       </header>
