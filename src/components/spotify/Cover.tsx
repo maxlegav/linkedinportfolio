@@ -36,7 +36,7 @@ export function Cover({
         <div className="absolute inset-0 flex items-end p-[8%]">
           <span
             className="font-black leading-none text-white"
-            style={{ fontSize: `clamp(0.6rem, min(18cqw, ${(125 / longestWord).toFixed(1)}cqw), 2.2rem)` }}
+            style={{ fontSize: `min(18cqw, ${(125 / longestWord).toFixed(1)}cqw, 2.2rem)` }}
           >
             {album.cover.label}
           </span>
